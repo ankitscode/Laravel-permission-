@@ -1,0 +1,19 @@
+
+.dt-length{
+    display: flex;
+    flex-direction: column;
+    flex-direction: column-reverse !important;
+}
+.dt-length-0{
+    content: "Enteries per page" !important;
+}
+.card{
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    overflow-x: hidden !important;
+}
+
+.table{
+
+    
+}
