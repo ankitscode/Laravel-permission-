@@ -2,15 +2,13 @@
 @section('css')
     <link href="{{ URL::asset('assets/libs/jsvectormap/jsvectormap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ URL::asset('assets/libs/swiper/swiper.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="{{ asset('assets/libs/data-tables/datatables.min.css') }}" href="style.css"> 
+    <link rel="{{ asset('assets/libs/data-tables/datatables.min.css') }}" href="style.css">
     <link rel="stylesheet" href="{{ asset('datatable_styles.css') }}">
     <style>
-
         .modal-body {
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
-       
     </style>
 @endsection
 @section('content')
@@ -19,24 +17,23 @@
             <div class="col-lg-12">
                 <div class="card ">
                     <div class="card-header align-items-center d-flex">
-                        <h5 class="card-title mb-0 flex-grow-1">Your User details here</h5>
+                        <h5 class="card-title mb-0 flex-grow-1">Users</h5>
                         <div class="flex-shrink">
                             <button type="button" id="modalButton" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add User
                             </button>
                         </div>
-                      </div>
+                    </div>
                     <!-- end card header -->
                     @php
                         $columns = [
-                            ['name' => 'Name', 'width' => '10%'],
-                            ['name' => 'Email', 'width' => '10%'],
-                            ['name' => 'Pet Name', 'width' => '10%'],
-                            ['name' => 'Breed', 'width' => '10%'],
+                            ['name' => 'Profile', 'width' => '20%'],
+                            ['name' => 'Name', 'width' => '20%'],
+                            ['name' => 'Email', 'width' => '20%'],
                             ['name' => 'Created_at', 'width' => '20%'],
                             ['name' => 'Updated_at', 'width' => '20%'],
-                            ['name' => 'Action', 'width' => '20%'],
+                            ['name' => 'Action', 'width' => '10%'],
                         ];
                     @endphp
 
@@ -57,9 +54,20 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="id" value="">
+                                    <div class="py-3">
+                                        <label for="" class="from-label">User Profile</label>
+                                        <input type="file" accept="image/*"
+                                            class="form-control  @error('name') is-invalid @enderror" id="image"
+                                            name="image" required>
+                                        <span class="text-danger">
+                                            @error('image')
+                                                <div class="invalid-feedback">{{ $message }}</div>
+                                            @enderror
+                                        </span>
+                                    </div>
                                     <div class="py-3">
                                         <label for="" class="from-label">Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
@@ -72,30 +80,10 @@
                                     </div>
                                     <div class="py-3">
                                         <label for="" class="from-label">Email</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" required>
                                         <span class="text-danger">
-                                            @error('name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </span>
-                                    </div>
-                                    <div class="py-3">
-                                        <label for="" class="from-label">Pet Name</label>
-                                        <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            id="petname" name="petname" required>
-                                        <span class="text-danger">
-                                            @error('name')
-                                                <div class="invalid-feedback">{{ $message }}</div>
-                                            @enderror
-                                        </span>
-                                    </div>
-                                    <div class="py-3">
-                                        <label for="" class="form-label">breed</label>
-                                        <input type="text" class="form-control @error('degree') is-invalid @enderror"
-                                            id="breed" name="breed" required>
-                                        <span class="text-danger">
-                                            @error('breed')
+                                            @error('email')
                                                 <div class="invalid-feedback">{{ $message }}</div>
                                             @enderror
                                         </span>
@@ -137,6 +125,13 @@
                 }
             },
             "columns": [{
+                    "data": "image",
+                    "render": function(data, type, row) {
+                        return '<img src="' + data +
+                            '" alt="Profile Image" style="width:50px; height:50px;"/>';
+                    },
+                },
+                {
                     "data": "name",
                     "render": function(data, type, row) {
                         return data;
@@ -144,18 +139,6 @@
                 },
                 {
                     "data": "email",
-                    "render": function(data, type, row) {
-                        return data;
-                    },
-                },
-                {
-                    "data": "petname",
-                    "render": function(data, type, row) {
-                        return data;
-                    },
-                },
-                {
-                    "data": "breed",
                     "render": function(data, type, row) {
                         return data;
                     },
@@ -212,6 +195,7 @@
             $('#email').val('');
             $('#petname').val('');
             $('#breed').val('');
+            $('#image').val('');
         });
 
 
@@ -237,28 +221,41 @@
             var email = $('#email').val();
             var petname = $('#petname').val();
             var breed = $('#breed').val();
-            $.ajax({
-                type: "POST",
-                url: '{{ route('adduser') }}',
-                data: {
-                    'name': name,
-                    'email': email,
-                    'petname': petname,
-                    'breed': breed,
-                    '_token': '{{ csrf_token() }}'
-                },
-                success: function(data) {
-                    $('#exampleModal').modal('hide');
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#petname').val('');
-                    $('#breed').val('');
-                    $('#Table').DataTable().ajax.reload();
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
+            var imageInput = $('#image')[0];
+
+            // Check if a file was selected
+            if (imageInput.files.length > 0) {
+                var formData = new FormData();
+                formData.append('name', name);
+                formData.append('email', email);
+                formData.append('petname', petname);
+                formData.append('breed', breed);
+                formData.append('image', imageInput.files[0]);
+                formData.append('_token', '{{ csrf_token() }}');
+
+                $.ajax({
+                    type: "POST",
+                    url: '{{ route('adduser') }}',
+                    data: formData,
+                    contentType: false, // Important Set this to false to avoid issues with file uploads
+                    processData: false, // Also set this to false to prevent jQuery from trying to process the FormData
+                    success: function(data) {
+                        $('#exampleModal').modal('hide');
+                        $('#name').val('');
+                        $('#email').val('');
+                        $('#petname').val('');
+                        $('#breed').val('');
+                        $('#image').val('');
+                        $('#Table').DataTable().ajax.reload();
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            } else {
+                // Handle the case where no file was selected
+                console.log("No file selected.");
+            }
         }
 
 
@@ -283,49 +280,49 @@
             }
         });
 
-        function editUser(id) {
-            $.ajax({
-                url: '{{ route('edituser', ':id') }}'.replace(':id', id),
-                method: 'GET',
-                success: function(data) {
-                    $('#name').val(data.name);
-                    $('#email').val(data.email);
-                    $('#petname').val(data.petname);
-                    $('#breed').val(data.breed);
-                    $('#exampleModal').modal('show');
-                    $("#formsubmit").html("Update");
-                    $("#formsubmit").attr("data-id", id);
-                }
-            });
-        }
+        // function editUser(id) {
+        //     $.ajax({
+        //         url: '{{ route('edituser', ':id') }}'.replace(':id', id),
+        //         method: 'GET',
+        //         success: function(data) {
+        //             $('#name').val(data.name);
+        //             $('#email').val(data.email);
+        //             $('#petname').val(data.petname);
+        //             $('#breed').val(data.breed);
+        //             $('#exampleModal').modal('show');
+        //             $("#formsubmit").html("Update");
+        //             $("#formsubmit").attr("data-id", id);
+        //         }
+        //     });
+        // }
 
-        function updateUser(id) {
-            var name = $('#name').val();
-            var email = $('#email').val();
-            var petname = $('#petname').val();
-            var breed = $('#breed').val();
-            $.ajax({
-                type: "POST",
-                url: '{{ route('userupdate', '') }}/' + id,
-                data: {
-                    'name': name,
-                    'email': email,
-                    'petname': petname,
-                    'breed': breed,
-                    '_token': '{{ csrf_token() }}'
-                },
-                success: function(data) {
-                    $('#exampleModal').modal('hide');
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#petname').val('');
-                    $('#breed').val('');
-                    $('#Table').DataTable().ajax.reload();
-                },
-                error: function(xhr, status, error) {
-                    console.error(xhr.responseText);
-                }
-            });
-        }
+        // function updateUser(id) {
+        //     var name = $('#name').val();
+        //     var email = $('#email').val();
+        //     var petname = $('#petname').val();
+        //     var breed = $('#breed').val();
+        //     $.ajax({
+        //         type: "POST",
+        //         url: '{{ route('userupdate', '') }}/' + id,
+        //         data: {
+        //             'name': name,
+        //             'email': email,
+        //             'petname': petname,
+        //             'breed': breed,
+        //             '_token': '{{ csrf_token() }}'
+        //         },
+        //         success: function(data) {
+        //             $('#exampleModal').modal('hide');
+        //             $('#name').val('');
+        //             $('#email').val('');
+        //             $('#petname').val('');
+        //             $('#breed').val('');
+        //             $('#Table').DataTable().ajax.reload();
+        //         },
+        //         error: function(xhr, status, error) {
+        //             console.error(xhr.responseText);
+        //         }
+        //     });
+        // }
     </script>
 @endsection

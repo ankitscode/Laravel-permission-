@@ -8,15 +8,18 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Spatie\Permission\Models\Permission;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class CommenController extends Controller
 {
     public static function allPermissions()
-{
-    return Permission::whereIn('guard_name', ['web', 'doctor'])->get(['id', 'name', 'guard_name']);;
-}
+    {
+        return Permission::whereIn('guard_name', ['web'])->get(['id', 'name', 'guard_name']);;
+    }
 
     public static function getRolePermission($role_id)
     {

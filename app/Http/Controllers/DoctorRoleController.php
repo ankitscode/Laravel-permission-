@@ -7,7 +7,6 @@ use Yajra\DataTables\Facades\DataTables;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Support\Facades\Log;
-use App\Http\Requests\StoreRoleRequest;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
 
@@ -18,7 +17,15 @@ class DoctorRoleController extends Controller
      */
     public function index()
     {
-        return view('admin.doctor.doctor_role.doctorroleindex');
+        if (!auth_permission_check('View','doctor')) return redirect()->back();
+        try {
+            return view('admin.doctor.doctor_role.doctorroleindex');
+        } catch (\Exception $e) {
+            Log::error('#### ManageRoleController -> index() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
+       
     }
 
     /**
@@ -26,12 +33,12 @@ class DoctorRoleController extends Controller
      */
     public function create()
     {
-        if (!auth_permission_check('Create','doctor')) return redirect()->back();
+        if (!auth_permission_check('create','doctor')) return redirect()->back();
         try {
-            $permission = CommenController::showRolePermission(null, 1);
+            $permission = DoctorCommenController::showDoctorRolePermission(null, 1);
             return view('admin.doctor.doctor_role.createdoctorrole', compact('permission'));
         } catch (\Exception $e) {
-            Log::error('#### ManageRoleController -> create() #### ' . $e->getMessage());
+            Log::error('#### DoctorRoleController -> create() #### ' . $e->getMessage());
             Session::flash('alert-error', __('message.something_went_wrong'));
             return redirect()->back();
         }
@@ -43,12 +50,12 @@ class DoctorRoleController extends Controller
      */
     public function store(Request $request)
     {
-        if (!auth_permission_check('Create','doctor')) return redirect()->back();
+        if (!auth_permission_check('create','doctor')) return redirect()->back();
         DB::beginTransaction();
         try {
             $role = Role::create([
                 'name'       => $request->role_name,
-                'guard_name' => 'web',
+                'guard_name' => 'doctor',
             ]);
             $role->syncPermissions($request->permission);
             DB::commit();
@@ -56,7 +63,7 @@ class DoctorRoleController extends Controller
             return redirect()->route('doctor.showRole', $role->id);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('#### ManageRoleController -> store() #### ' . $e->getMessage());
+            Log::error('#### DoctorRoleController -> store() #### ' . $e->getMessage());
             Session::flash('alert-error', __('message.something_went_wrong'));
             return redirect()->back()->withInput();
         }
@@ -74,7 +81,7 @@ class DoctorRoleController extends Controller
         }
         try {
             $role = Role::where('id', $id)->first();
-            $permission = CommenController::showRolePermission($role->id,$id);
+            $permission = DoctorCommenController::showDoctorRolePermission($role->id,$id);
             return view('admin.doctor.doctor_role.showdoctorrole', compact('role', 'permission'));
         } catch (\Exception $e) {
             Log::error('#### ManageRoleController -> show() #### ' . $e->getMessage());
@@ -95,10 +102,10 @@ class DoctorRoleController extends Controller
         }
         try {
             $role = Role::where('id', $id)->first();
-            $permission = CommenController::showRolePermission($role->id,$id);
+            $permission = DoctorCommenController::showDoctorRolePermission($role->id,$id);
             return view('admin.doctor.doctor_role.editdoctorrole', compact('role', 'permission'));
         } catch (\Exception $e) {
-            Log::error('#### ManageRoleController -> edit() #### ' . $e->getMessage());
+            Log::error('#### DoctorRoleController -> edit() #### ' . $e->getMessage());
             Session::flash('alert-error', __('message.something_went_wrong'));
             return redirect()->back();
         }
@@ -119,17 +126,18 @@ class DoctorRoleController extends Controller
         try {
             $role = Role::where('id', $id)->first();
             $role->name       = $request->name;
-            $role->guard_name = 'web';
+            $role->guard_name = 'doctor';
             $role->save();
             if ($role->id !== 1){
                 $role->syncPermissions($request->permission);
             }
+            // dd($role);
             DB::commit();
             Session::flash('alert-success', __('message.records_updated_successfully'));
             return redirect()->route('doctor.showRole', $role->id);
         } catch (\Exception $e) {
             DB::rollBack();
-            Log::error('#### ManageRoleController -> update() #### ' . $e->getMessage());
+            Log::error('#### DoctorRoleController -> update() #### ' . $e->getMessage());
             Session::flash('alert-error', __('message.something_went_wrong'));
             return redirect()->back()->withInput();
         }
@@ -146,19 +154,20 @@ class DoctorRoleController extends Controller
     /**
      * show the roles from roles tabels
      */
-    public function dataTableRoles(){
-        return Datatables::of(Role::query())
+    public function dataTableRoles()
+    {
+        return Datatables::of(Role::where('guard_name', 'doctor')->get())
             ->addColumn('Role', function ($role) {
                 return $role->name; // Assuming 'name' is the attribute representing the role name
             })
             ->addColumn('Action', function ($role) {
                 $editLink = '<a href="' . route('doctor.editRole', ['id' => $role->id]) . '" class="ri-edit-2-fill fs-16"></a>';
-                $viewLink = '<a href="' . route('doctor.showRole', ['id' => $role->id]) . '" class="ri-eye-fill fs-16 "></a>';
+                $viewLink = '<a href="' . route('doctor.showRole', ['id' => $role->id]) . '" class="ri-eye-fill fs-16"></a>';
                 // Add other action links as needed
                 
                 return $editLink . ' ' . $viewLink;
             })
             ->rawColumns(['Action'])
             ->make(true);
-        }
+    }
 }

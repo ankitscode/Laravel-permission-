@@ -16,14 +16,14 @@ class ManageRoleController extends Controller
 {
     public function index()
     {
-        // if (!auth_permission_check('View All Roles')) return redirect()->back();
-        // try {
+        if (!auth_permission_check('all permission')) return redirect()->back();
+        try {
             return view('admin.role.index');
-        // } catch (\Exception $e) {
-        //     Log::error('#### ManageRoleController -> index() #### ' . $e->getMessage());
-        //     Session::flash('alert-error', __('message.something_went_wrong'));
-        //     return redirect()->back();
-        // }
+        } catch (\Exception $e) {
+            Log::error('#### ManageRoleController -> index() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 
     public function create()
@@ -41,7 +41,7 @@ class ManageRoleController extends Controller
 
     public function store(Request $request)
     {
-        if (!auth_permission_check('Create Role')) return redirect()->back();
+        if (!auth_permission_check('all permission')) return redirect()->back();
         DB::beginTransaction();
         try {
             $role = Role::create([
@@ -130,7 +130,7 @@ class ManageRoleController extends Controller
         if (!auth_permission_check('View All Roles')) DataTables::of([])->make(true);
         try {
             #main query
-            $roles = Role::query();
+            $roles = Role::where('guard_name', 'web')->get();
             return Datatables::of($roles)->make(true);
         } catch (\Exception $e) {
             Log::error('#### ManageRoleController -> dataTableRolesListTable() ####### ' . $e->getMessage());

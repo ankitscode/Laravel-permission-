@@ -220,6 +220,11 @@
                                 <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                                 My Profile !
                             </a>
+                            @canany('all permission')
+                            <a class="dropdown-item" href="{{ route('changePassword') }}"><i
+                                class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span
+                                class="align-middle">{{__('main.change_password')}}</span></a>
+                                @endcanany
                             @elseauth('doctor')
                             <h6 class="dropdown-header">{{ auth('doctor')->user()->name }}</h6>
                             <a class="dropdown-item"
@@ -227,7 +232,11 @@
                                 <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                                 My Profile !
                             </a>
-                        @endauth
+                            {{-- <a class="dropdown-item" href="{{ route('changePassword') }}">
+                                <i class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> 
+                                <span class="align-middle">{{ __('main.change_password') }}</span>
+                            </a>                            --}}
+                            @endauth
                         <a class="dropdown-item" href="javascript:void();"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="bx bx-power-off font-size-16 align-middle me-1"></i>

@@ -30,7 +30,7 @@
                             </tr>
                             <tr>
                                 <td class="font-bold-600">{{ __('Pet Breed') }}</td>
-                                <td>{{ isset($user->breed) }}
+                                <td>{{ ($user->breed) }}
                                 </td>
                             </tr>
                         </tbody>

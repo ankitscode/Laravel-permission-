@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class DashboardController extends Controller
@@ -92,4 +96,44 @@ class DashboardController extends Controller
         return redirect()->back();
     
     }
+    public function changePassword()
+    {
+        if (!auth_permission_check('all permission')) abort(404);
+
+        try {
+            return view('admin.user.changepassword');
+        } catch (\Exception $e) {
+            Log::error('####### HomeController -> changePassword() #######  ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
+    }
+
+    public function changePasswordStore(Request $request)
+    {
+        // dd($request);
+        if (!auth_permission_check('all permission')) abort(404);
+
+        if (!Hash::check($request->old_password, Auth::user()->password)) {
+            Session('alert-error', __('message.old_passward_invalid'));
+            return redirect()->back();
+        }
+        DB::beginTransaction();
+        try {
+            $user               = User::find(Auth::user()->id);
+            $user->password     = Hash::make($request->password);
+            $user->save();
+
+            DB::commit();
+            Session('alert-success', __('message.password_updated_successfully'));
+            return redirect()->route('dashboard');
+
+        } catch (\Exception $e) {
+            DB::rollBack();
+            Log::error('####### HomeController -> changePasswordStore() #######  ' . $e->getMessage());
+            Session('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
+    }
+
 }

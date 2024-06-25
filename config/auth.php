@@ -41,9 +41,18 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+
         'doctor' => [
-            'driver' => 'session',
+            'driver' => 'session','passport',
+            'provider' => 'doctors',
+        ],
+
+        'doctor_api' => [
+            'driver' => 'passport',
             'provider' => 'doctors',
         ],
     ],
@@ -71,10 +80,11 @@ return [
             'model' => App\Models\User::class,
         ],
 
-       'doctors' => [
-        'driver' => 'eloquent',
-        'model' => App\Models\Doctor::class, 
-    ],
+        'doctors' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Doctor::class,
+        ],
+
     ],
 
     /*

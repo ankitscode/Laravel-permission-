@@ -3,7 +3,6 @@
     @lang('translation.signup')
 @endsection
 @section('content')
-
     <div class="auth-page-wrapper pt-5">
         <!-- auth page bg -->
         <div class="auth-one-bg-position auth-one-bg" id="auth-particles">
@@ -76,46 +75,33 @@
                                             <div class="invalid-feedback">
                                                 Please enter email
                                             </div>
-                                        </div>                                        
+                                        </div>
+
                                         <div class="mb-2">
-                                            <label for="userpassword" class="form-label">Password <span
-                                                    class="text-danger">*</span></label>
-                                            <input type="password"
-                                                class="form-control @error('password') is-invalid @enderror" name="password"
-                                                id="userpassword" placeholder="Enter password" required>
-                                            @error('password')
+                                            <label for="userpassword" class="form-label">Password <span class="text-danger">*</span></label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="userpassword" placeholder="Enter password" required>
+                                                @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                            <div class="invalid-feedback">
-                                                Please enter password
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="togglePasswordBtn1"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
                                         </div>
-                                        <div class=" mb-4">
-                                            <label for="input-password">Confirm Password</label>
-                                            <input type="password"
-                                                class="form-control @error('password_confirmation') is-invalid @enderror"
-                                                name="password_confirmation" id="input-password"
-                                                placeholder="Enter Confirm Password" required>
-
-                                            <div class="form-floating-icon">
-                                                <i data-feather="lock"></i>
-                                            </div>
-                                        </div>
-                                        {{-- <div class=" mb-4">
-                                            <input type="file" class="form-control @error('avatar') is-invalid @enderror"
-                                                name="avatar" id="input-avatar" required>
-                                            @error('avatar')
+                                        
+                                        <div class="mb-4">
+                                            <label class="form-label" for="input-password">Confirm Password</label>
+                                            <div class="position-relative auth-pass-inputgroup mb-3">
+                                                <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" name="password_confirmation" id="input-password" placeholder="Enter Confirm Password" required>
+                                                @error('password_confirmation')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
                                                 </span>
                                             @enderror
-                                            <div class="">
-                                                <i data-feather="file"></i>
+                                                <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted" type="button" id="togglePasswordBtn2"><i class="ri-eye-fill align-middle"></i></button>
                                             </div>
-                                        </div> --}}
-
+                                        </div>
                                         <div class="mb-4">
                                             <p class="mb-0 fs-12 text-muted fst-italic">By registering you agree to the
                                                 HangingPanda <a href="#"
@@ -176,8 +162,8 @@
                         <div class="text-center">
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> HangingPanda. Crafted with <i
-                                    class="mdi mdi-heart text-danger"></i></p>
+                            </script> HangingPanda. Crafted with <i class="mdi mdi-heart text-danger"></i>
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -191,4 +177,19 @@
     <script src="{{ URL::asset('assets/libs/particles.js/particles.js.min.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/particles.app.js') }}"></script>
     <script src="{{ URL::asset('assets/js/pages/form-validation.init.js') }}"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const togglePasswordButtons = document.querySelectorAll('#togglePasswordBtn1, #togglePasswordBtn2');
+
+    togglePasswordButtons.forEach(function(button) {
+        button.addEventListener('click', function () {
+            const inputField = this.previousElementSibling;
+            const type = inputField.getAttribute('type') === 'password'? 'text' : 'password';
+            inputField.setAttribute('type', type);
+            this.querySelector('i').classList.toggle('ri-eye-fill');
+            this.querySelector('i').classList.toggle('ri-eye-off-fill');
+        });
+    });
+});
+    </script>
 @endsection

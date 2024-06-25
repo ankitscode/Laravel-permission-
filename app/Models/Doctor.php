@@ -6,12 +6,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Laravel\Passport\HasApiTokens;
+use Laravel\Passport\TokenGuard;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Support\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 
-class Doctor extends Authenticatable
+class Doctor extends  Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
@@ -58,4 +59,9 @@ class Doctor extends Authenticatable
         return Carbon::parse($value)->format('Y-m-d H:i:s');
     }
   
+    public function Treatment()
+    {
+        return $this->hasMany(Pet::class);
+    }
+
 }

@@ -1,0 +1,342 @@
+name: 'User Management'
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/profile
+    metadata:
+      groupName: 'User Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Retrieve the authenticated user's profile."
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 4aecd63k8Zb61EvD5VPhfag'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "data": {
+                  "name": "John Doe",
+                  "email": "johndoe@example.com",
+                  "created_at": "2024-06-24T12:34:56Z",
+                  "updated_at": "2024-06-24T12:34:56Z"
+              },
+              "message": "get user profile successfully"
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "message": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 4aecd63k8Zb61EvD5VPhfag'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/profileupdate
+    metadata:
+      groupName: 'User Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Update the authenticated user's profile."
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer D8fedE64ahk3v5PVZ1b6acg'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user.'
+        required: true
+        example: quia
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
+        required: true
+        example: nigel.hartmann@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: quia
+      email: nigel.hartmann@example.org
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "User updated successfully",
+              "data": {
+                  "name": "John Doe",
+                  "email": "johndoe@example.com",
+                  "created_at": "2024-06-24T12:34:56Z",
+                  "updated_at": "2024-06-24T12:34:56Z"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "error": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+              "errors": {
+
+                      "invalid data format."
+
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+              "error": "Something went wrong."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer D8fedE64ahk3v5PVZ1b6acg'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/profiledelete
+    metadata:
+      groupName: 'User Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Delete the authenticated user's profile."
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer b6aDvfVk654ZdcE1eaPgh38'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user to delete.'
+        required: true
+        example: eaque
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanUrlParameters:
+      id: eaque
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "User deleted successfully",
+              "data": {
+                  "name": "John Doe",
+                  "email": "johndoe@example.com",
+                  "created_at": "2024-06-24T12:34:56Z",
+                  "updated_at": "2024-06-24T12:34:56Z"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "error": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+              "error": "Something went wrong."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer b6aDvfVk654ZdcE1eaPgh38'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/profilecreate
+    metadata:
+      groupName: 'User Management'
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Created the authenticated user's profile."
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer 1vdD4a66b85ceE3hPfVkgaZ'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'The name of the user.'
+        required: true
+        example: expedita
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+      email:
+        name: email
+        description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
+        required: true
+        example: wdamore@example.org
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        custom: []
+    cleanBodyParameters:
+      name: expedita
+      email: wdamore@example.org
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+              "status": true,
+              "message": "User Created successfully",
+              "data": {
+                  "name": "John Doe",
+                  "email": "johndoe@example.com",
+                  "created_at": "2024-06-24T12:34:56Z",
+                  "updated_at": "2024-06-24T12:34:56Z"
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 401
+        content: |-
+          {
+              "error": "Unauthenticated."
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 422
+        content: |-
+          {
+              "errors": {
+
+                      "invalid data format."
+
+              }
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 500
+        content: |-
+          {
+              "error": "Something went wrong."
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 1vdD4a66b85ceE3hPfVkgaZ'
+    controller: null
+    method: null
+    route: null
+    custom: []

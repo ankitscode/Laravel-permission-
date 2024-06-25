@@ -110,4 +110,12 @@ class Doctorcontroller extends Controller
         $doctor->delete();
         return redirect()->route('doctorindex');
     }
+
+    public function change_Password(){
+
+        return view('admin.user.changepassword');
+
+    }
+
+    // public function 
 }

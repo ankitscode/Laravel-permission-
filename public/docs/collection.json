@@ -1,0 +1,779 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "http:\/\/127.0.0.1:8000\/"
+        }
+    ],
+    "info": {
+        "name": "Laravel-Permission",
+        "_postman_id": "49f7c343-44bc-4fc1-b9b6-babdda0e280e",
+        "description": "This is Laravel project which has used following features like guards,spatie laravel-permission, yajra-datatable,laravel-passport for api ",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "description": "",
+            "item": [
+                {
+                    "name": "Log out the authenticated user.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/logout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/logout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully.\",\n    \"user\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"success\": false,\n    \"message\": \"Failed to authenticate.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"success\": false,\n    \"message\": \"Internal Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Log out the authenticated doctor.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/doctorprofilelogout",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/doctorprofilelogout"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully.\",\n    \"doctor\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"success\": false,\n    \"message\": \"Failed to authenticate.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"success\": false,\n    \"message\": \"Internal Server Error\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Base64 to Image",
+            "description": "",
+            "item": [
+                {
+                    "name": "Save an image from base64 encoded string.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/image",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/image"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"image\":\"quibusdam\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"converted successfully\",\n    \"data\": {\n        \"type\": \"image\/jpeg\",\n        \"file_size\": 12345,\n        \"name\": \"1234567890.jpg\",\n        \"thumbnail_name\": \"thumbnail_1234567890.jpg\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"errors\": {\n        \"image\": [\n            \"The image must be a string.\"\n        ]\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"status\": false,\n    \"message\": \"converted not successfully\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "user",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Log in a user.",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/login",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/login"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"email\":\"annabell.rogahn@example.org\",\"password\":\"ruC|@LNV\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29\",\n    \"user\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 401,
+                                    "body": "{\n    \"success\": false,\n    \"message\": \"Failed to authenticate.\"\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 500,
+                                    "body": "{\n    \"success\": false,\n    \"message\": \"Internal Server Error\"\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Register a new user.",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/register",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/register"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"enim\",\"email\":\"reggie.hagenes@example.com\",\"password\":\"--<a,IK'Kk%G2\"}"
+                                },
+                                "description": ""
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\n    \"user\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"token\": \"eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29\"\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 422,
+                                    "body": "{\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "name": "doctor",
+                    "description": "",
+                    "item": [
+                        {
+                            "name": "Register a new Doctor.",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/doctorregister",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/doctorregister"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"name\":\"nam\",\"email\":\"kbartoletti@example.com\",\"password\":\"=%;S6Oo!MzxJv|SD\"}"
+                                },
+                                "description": "This endpoint lets you register  a new user"
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\n    \"doctor\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"token\": \"eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29\"\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 422,
+                                    "body": "{\n    \"errors\": {\n        \"email\": [\n            \"The email has already been taken.\"\n        ]\n    }\n}",
+                                    "name": ""
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Log in a doctor.",
+                            "request": {
+                                "url": {
+                                    "host": "{{baseUrl}}",
+                                    "path": "api\/doctorlogin",
+                                    "query": [],
+                                    "raw": "{{baseUrl}}\/api\/doctorlogin"
+                                },
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application\/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application\/json"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\"email\":\"jammie21@example.com\",\"password\":\"5Z2g%.M\"}"
+                                },
+                                "description": "This endpoint lets you login as authenticated user"
+                            },
+                            "response": [
+                                {
+                                    "header": [],
+                                    "code": 200,
+                                    "body": "{\n    \"success\": true,\n    \"token\": \"eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29\",\n    \"doctor\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 401,
+                                    "body": "{\n    \"success\": false,\n    \"message\": \"Failed to authenticate.\"\n}",
+                                    "name": ""
+                                },
+                                {
+                                    "header": [],
+                                    "code": 500,
+                                    "body": "{\n    \"success\": false,\n    \"message\": \"Internal Server Error\"\n}",
+                                    "name": ""
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User Management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Retrieve the authenticated user's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"message\": \"get user profile successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the authenticated user's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profileupdate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profileupdate"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"quia\",\"email\":\"nigel.hartmann@example.org\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"User updated successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete the authenticated user's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profiledelete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profiledelete",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "eaque",
+                                    "description": "The ID of the user to delete."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"User deleted successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Created the authenticated user's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/profilecreate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/profilecreate"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"expedita\",\"email\":\"wdamore@example.org\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"User Created successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "doctor Management",
+            "description": "",
+            "item": [
+                {
+                    "name": "Delete the authenticated doctor's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/doctorprofiledelete",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/doctorprofiledelete",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolorem",
+                                    "description": "The ID of the doctor to delete."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"doctor deleted successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"petname\": \"Buddy\",\n        \"breed\": \"Labrador Retriever\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Retrieve the authenticated doctor's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/doctorprofile",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/doctorprofile"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"degree\": \"mbbs\",\n        \"treatment\": \"legbreak\",\n        \"patient_name\": \"buuzo\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"message\": \"get doctor profile successfully\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Update the authenticated doctor's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/doctorprofileupdate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/doctorprofileupdate"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"officia\",\"email\":\"marilyne57@example.org\",\"patient_name\":\"magni\",\"degree\":\"repudiandae\",\"treatment\":\"dolor\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"doctor updated successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"petname\": \"Buddy\",\n        \"breed\": \"Labrador Retriever\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Createe the authenticated doctor's profile.",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/doctorprofilecreate",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/doctorprofilecreate"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"deleniti\",\"email\":\"dare.ralph@example.com\",\"patient_name\":\"voluptatem\",\"degree\":\"et\",\"treatment\":\"rerum\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"status\": true,\n    \"message\": \"doctor updated successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"petname\": \"Buddy\",\n        \"breed\": \"Labrador Retriever\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 401,
+                            "body": "{\n    \"error\": \"Unauthenticated.\"\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 500,
+                            "body": "{\n    \"error\": \"Something went wrong.\"\n}",
+                            "name": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "bearer",
+        "bearer": [
+            {
+                "key": "key",
+                "type": "string"
+            }
+        ]
+    }
+}

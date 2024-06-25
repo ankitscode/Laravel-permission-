@@ -1,0 +1,1364 @@
+openapi: 3.0.3
+info:
+  title: Laravel-Permission
+  description: 'This is Laravel project which has used following features like guards,spatie laravel-permission, yajra-datatable,laravel-passport for api '
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/logout:
+    post:
+      summary: 'Log out the authenticated user.'
+      operationId: logOutTheAuthenticatedUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Logged out successfully.'
+                  user:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Logged out successfully.'
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Failed to authenticate.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Failed to authenticate.'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Internal Server Error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Internal Server Error'
+      tags:
+        - Authentication
+  /api/doctorprofilelogout:
+    post:
+      summary: 'Log out the authenticated doctor.'
+      operationId: logOutTheAuthenticatedDoctor
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  message: 'Logged out successfully.'
+                  doctor:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'Logged out successfully.'
+                  doctor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Failed to authenticate.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Failed to authenticate.'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Internal Server Error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Internal Server Error'
+      tags:
+        - Authentication
+  /api/image:
+    post:
+      summary: 'Save an image from base64 encoded string.'
+      operationId: saveAnImageFromBase64EncodedString
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'converted successfully'
+                  data:
+                    type: image/jpeg
+                    file_size: 12345
+                    name: 1234567890.jpg
+                    thumbnail_name: thumbnail_1234567890.jpg
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'converted successfully'
+                  data:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                        example: image/jpeg
+                      file_size:
+                        type: integer
+                        example: 12345
+                      name:
+                        type: string
+                        example: 1234567890.jpg
+                      thumbnail_name:
+                        type: string
+                        example: thumbnail_1234567890.jpg
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    image:
+                      - 'The image must be a string.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      image:
+                        type: array
+                        example:
+                          - 'The image must be a string.'
+                        items:
+                          type: string
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: false
+                  message: 'converted not successfully'
+                properties:
+                  status:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'converted not successfully'
+      tags:
+        - 'Base64 to Image'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                image:
+                  type: string
+                  description: 'The base64 encoded image string.'
+                  example: quibusdam
+              required:
+                - image
+  /api/login:
+    post:
+      summary: 'Log in a user.'
+      operationId: logInAUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  token: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                  user:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  token:
+                    type: string
+                    example: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Failed to authenticate.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Failed to authenticate.'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Internal Server Error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Internal Server Error'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'valid email address The email of the user.'
+                  example: annabell.rogahn@example.org
+                password:
+                  type: string
+                  description: 'min:8 The password of the user.'
+                  example: ruC|@LNV
+              required:
+                - email
+                - password
+  /api/register:
+    post:
+      summary: 'Register a new user.'
+      operationId: registerANewUser
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  user:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                  token: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                properties:
+                  user:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                  token:
+                    type: string
+                    example: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: enim
+                email:
+                  type: string
+                  description: 'valid email address The email of the user.'
+                  example: reggie.hagenes@example.com
+                password:
+                  type: string
+                  description: 'min:8 The password of the user.'
+                  example: "--<a,IK'Kk%G2"
+              required:
+                - name
+                - email
+                - password
+  /api/doctorregister:
+    post:
+      summary: 'Register a new Doctor.'
+      operationId: registerANewDoctor
+      description: 'This endpoint lets you register  a new user'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  doctor:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                  token: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                properties:
+                  doctor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                  token:
+                    type: string
+                    example: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+        422:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  errors:
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: nam
+                email:
+                  type: string
+                  description: 'valid email address The email of the user.'
+                  example: kbartoletti@example.com
+                password:
+                  type: string
+                  description: 'min:8 The password of the user.'
+                  example: '=%;S6Oo!MzxJv|SD'
+              required:
+                - name
+                - email
+                - password
+  /api/doctorlogin:
+    post:
+      summary: 'Log in a doctor.'
+      operationId: logInADoctor
+      description: 'This endpoint lets you login as authenticated user'
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: true
+                  token: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                  doctor:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  success:
+                    type: boolean
+                    example: true
+                  token:
+                    type: string
+                    example: eyJhbGciOiAiSFMyNTYiLCJraWQiOiAiYWMwMDZmMDYtMGM0ZC00MTQ5LWE5MTYtYjEwYzQ2N2YzZmMwIn0.eyJqdGkiOiAibG9naW4tY29
+                  doctor:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Failed to authenticate.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Failed to authenticate.'
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  message: 'Internal Server Error'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  message:
+                    type: string
+                    example: 'Internal Server Error'
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'valid email address The email of the user.'
+                  example: jammie21@example.com
+                password:
+                  type: string
+                  description: 'min:8 The password of the user.'
+                  example: 5Z2g%.M
+              required:
+                - email
+                - password
+  /api/profile:
+    get:
+      summary: "Retrieve the authenticated user's profile."
+      operationId: retrieveTheAuthenticatedUsersProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                  message: 'get user profile successfully'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                  message:
+                    type: string
+                    example: 'get user profile successfully'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'User Management'
+  /api/profileupdate:
+    post:
+      summary: "Update the authenticated user's profile."
+      operationId: updateTheAuthenticatedUsersProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'User updated successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'User updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: quia
+                email:
+                  type: string
+                  description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
+                  example: nigel.hartmann@example.org
+              required:
+                - name
+                - email
+  /api/profiledelete:
+    post:
+      summary: "Delete the authenticated user's profile."
+      operationId: deleteTheAuthenticatedUsersProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'User deleted successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'User deleted successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'User Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user to delete.'
+        example: eaque
+        required: true
+        schema:
+          type: string
+  /api/profilecreate:
+    post:
+      summary: "Created the authenticated user's profile."
+      operationId: createdTheAuthenticatedUsersProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'User Created successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'User Created successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'User Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: expedita
+                email:
+                  type: string
+                  description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
+                  example: wdamore@example.org
+              required:
+                - name
+                - email
+  /api/doctorprofiledelete:
+    post:
+      summary: "Delete the authenticated doctor's profile."
+      operationId: deleteTheAuthenticatedDoctorsProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'doctor deleted successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    petname: Buddy
+                    breed: 'Labrador Retriever'
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'doctor deleted successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      petname:
+                        type: string
+                        example: Buddy
+                      breed:
+                        type: string
+                        example: 'Labrador Retriever'
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'doctor Management'
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the doctor to delete.'
+        example: dolorem
+        required: true
+        schema:
+          type: string
+  /api/doctorprofile:
+    get:
+      summary: "Retrieve the authenticated doctor's profile."
+      operationId: retrieveTheAuthenticatedDoctorsProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    degree: mbbs
+                    treatment: legbreak
+                    patient_name: buuzo
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                  message: 'get doctor profile successfully'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      degree:
+                        type: string
+                        example: mbbs
+                      treatment:
+                        type: string
+                        example: legbreak
+                      patient_name:
+                        type: string
+                        example: buuzo
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                  message:
+                    type: string
+                    example: 'get doctor profile successfully'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: Unauthenticated.
+                properties:
+                  message:
+                    type: string
+                    example: Unauthenticated.
+      tags:
+        - 'doctor Management'
+  /api/doctorprofileupdate:
+    post:
+      summary: "Update the authenticated doctor's profile."
+      operationId: updateTheAuthenticatedDoctorsProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'doctor updated successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    petname: Buddy
+                    breed: 'Labrador Retriever'
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'doctor updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      petname:
+                        type: string
+                        example: Buddy
+                      breed:
+                        type: string
+                        example: 'Labrador Retriever'
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'doctor Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the user.'
+                  example: officia
+                email:
+                  type: string
+                  description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
+                  example: marilyne57@example.org
+                patient_name:
+                  type: string
+                  description: 'The patient_name(pet name).'
+                  example: magni
+                degree:
+                  type: string
+                  description: 'The degree of the doctor.'
+                  example: repudiandae
+                treatment:
+                  type: string
+                  description: 'The treatment name for the pet.'
+                  example: dolor
+              required:
+                - name
+                - email
+                - patient_name
+                - degree
+                - treatment
+  /api/doctorprofilecreate:
+    post:
+      summary: "Createe the authenticated doctor's profile."
+      operationId: createeTheAuthenticatedDoctorsProfile
+      description: ''
+      parameters: []
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: true
+                  message: 'doctor updated successfully'
+                  data:
+                    name: 'John Doe'
+                    email: johndoe@example.com
+                    petname: Buddy
+                    breed: 'Labrador Retriever'
+                    created_at: '2024-06-24T12:34:56Z'
+                    updated_at: '2024-06-24T12:34:56Z'
+                properties:
+                  status:
+                    type: boolean
+                    example: true
+                  message:
+                    type: string
+                    example: 'doctor updated successfully'
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: 'John Doe'
+                      email:
+                        type: string
+                        example: johndoe@example.com
+                      petname:
+                        type: string
+                        example: Buddy
+                      breed:
+                        type: string
+                        example: 'Labrador Retriever'
+                      created_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+                      updated_at:
+                        type: string
+                        example: '2024-06-24T12:34:56Z'
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: Unauthenticated.
+                properties:
+                  error:
+                    type: string
+                    example: Unauthenticated.
+        422:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n    \"errors\": {\n\n            \"invalid data format.\"\n\n    }\n}"
+        500:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  error: 'Something went wrong.'
+                properties:
+                  error:
+                    type: string
+                    example: 'Something went wrong.'
+      tags:
+        - 'doctor Management'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'The name of the doctor.'
+                  example: deleniti
+                email:
+                  type: string
+                  description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
+                  example: dare.ralph@example.com
+                patient_name:
+                  type: string
+                  description: 'The patient_name(pet name).'
+                  example: voluptatem
+                degree:
+                  type: string
+                  description: 'The degree of the doctor.'
+                  example: et
+                treatment:
+                  type: string
+                  description: 'The treatment name for the pet.'
+                  example: rerum
+              required:
+                - name
+                - email
+                - patient_name
+                - degree
+                - treatment
+tags:
+  -
+    name: Authentication
+    description: ''
+  -
+    name: 'Base64 to Image'
+    description: ''
+  -
+    name: Endpoints
+    description: ''
+  -
+    name: 'User Management'
+    description: ''
+  -
+    name: 'doctor Management'
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: 'You can retrieve your token by login <b>Generate API token</b>.'
+security:
+  -
+    default: []

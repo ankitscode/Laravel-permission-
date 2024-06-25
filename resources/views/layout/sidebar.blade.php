@@ -58,6 +58,11 @@
                                 @endcan
                                 @can('all permission')
                                     <li class="nav-item">
+                                        <a href="{{ route('petsindex') }}" class="nav-link  {{ (request()->is('user/petsindex*')) ? 'active' : '' }}">@lang('Users Pets')</a>
+                                    </li>
+                                @endcan
+                                @can('all permission')
+                                    <li class="nav-item">
                                         <a href="{{route('admin.roleList')}}" class=" nav-link {{ request()->is('user/role*') ? 'active' : '' }}">@lang('User Roles')</a>
                                     </li>
                                 @endcan
@@ -76,6 +81,11 @@
                                 <li class="nav-item">
                                     <a href="{{route('doctorindex')}}" class="nav-link {{ (request()->is('doctor/doctorindex*')) ? 'active' : '' }}">@lang('All Doctors')</a>
                                 </li>
+                                {{-- @can('View','doctor') --}}
+                                <li class="nav-item">
+                                    <a href="{{ route('treatmentindex') }}" class="nav-link {{ (request()->is('doctor/treatmentindex*')) ? 'active' : '' }}">@lang('Treatment')</a>
+                                </li>
+                                {{-- @endcan --}}
                                     <li class="nav-item">
                                         <a href="{{route('doctor.roleList')}}" class="nav-link {{ (request()->is('doctorrole*')) ? 'active' : '' }}">@lang('Doctor Roles')</a>
                                     </li>
@@ -83,40 +93,7 @@
                             </ul>
                         </div>
                      @endauth
-                    </li> <!--- Catalog -->
-
-                {{-- <li class="nav-item">
-                    <a href="#attribute" class="nav-link menu-link {{ (request()->is('stores/attributes*')) ? 'active collaspe' : 'collapsed' }}" data-bs-toggle="collapse" role="button" aria-expanded="{{ (request()->is('stores/attributes*')) ? 'true' : 'false' }}" aria-controls="attribute" data-key="t-email">
-                        <i class="ri-stack-line"></i> <span>@lang('main.attributes')</span>
-                    </a>
-                    <div class="menu-dropdown {{ (request()->is('stores/attributes*')) ? 'collapse show' : 'collapse' }}" id="attribute">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{route('admin.attributeProductList')}}" class="nav-link {{ (request()->is('stores/attributes/product*')) ? 'active' : '' }}">@lang('main.products')</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.indexVariationType')}}" class="nav-link {{ (request()->is('stores/attributes/attributeSet*')) ? 'active' : '' }}">@lang('main.attribute_set')</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> <!--- Attributes --> --}}
-
-                {{-- <li class="nav-item">
-                    <a href="#settings" class="nav-link menu-link {{ (request()->is('settings*')) ? 'active collaspe' : 'collapsed' }}" data-bs-toggle="collapse" role="button" aria-expanded="{{ (request()->is('settings*')) ? 'true' : 'false' }}" aria-controls="settings" data-key="t-email">
-                        <i class="ri-stack-line"></i> <span>@lang('main.setting')</span>
-                    </a>
-                    <div class="menu-dropdown {{ (request()->is('settings*')) ? 'collapse show' : 'collapse' }}" id="settings">
-                        <ul class="nav nav-sm flex-column">
-                            <li class="nav-item">
-                                <a href="{{route('admin.indexListType')}}" class="nav-link {{ (request()->is('settings/list-type*')) ? 'active' : '' }}">@lang('main.lockup')</a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.indexConfiguration')}}" class="nav-link {{ (request()->is('settings/configuration*')) ? 'active' : '' }}">@lang('main.configuration')</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li> <!--- setting --> --}}
-                <!-- end store Menu -->
+                    </li>
             </ul>
         </div>
         <!-- Sidebar -->

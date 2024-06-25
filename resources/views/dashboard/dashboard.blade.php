@@ -103,19 +103,18 @@
                 <table class="table table-bordered table-striped table-hover align-middle mb-0">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col" style="width: 20%">Name</th>
-                            <th scope="col" style="width: 20%">Email</th>
-                            <th scope="col" style="width: 20%">Petname</th>
-                            <th scope="col" style="width: 20%">Breed</th>
+                            <th scope="col" style="width: 30%">User Profile</th>
+                            <th scope="col" style="width: 30%">Name</th>
+                            <th scope="col" style="width: 30%">Email</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach ($latestUsers as $user)
                             <tr>
+                                <td><img src="{{ asset('storage/images/' . $user->image) }}" class="img-thumbnail"
+                                    width="40px" height="40px" /></td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->petname }}</td>
-                                <td>{{ $user->breed }}</td>
                             </tr>
                         @endforeach
                     </tbody>
