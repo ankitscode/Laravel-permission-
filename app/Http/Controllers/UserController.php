@@ -1,10 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Contracts\Encryption\DecryptException;
 
 class Usercontroller extends Controller
@@ -17,7 +22,7 @@ class Usercontroller extends Controller
         $Users = User::get();
         return view('admin.user.userindex');
     }
-/**
+    /**
      * 
      * Controller function for user datatabel.
      */
@@ -41,29 +46,35 @@ class Usercontroller extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string',
-            'email' => 'required|email',
-            'petname' => 'required|max:10',
-            'breed' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6048'
-        ]);
-        if ($request->hasFile('image')) {
+        if (!auth_permission_check('Add user')) return redirect()->back();
+       
+        try {
+            //code...
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6048'
+            ]);
+           
             if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $imageName = time() . '.' . $image->getClientOriginalExtension();
-                $image->storeAs('public/images', $imageName); // Store the image in storage/app/public/images
-                $imagePath = 'storage/images/' . $imageName;
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('public/images', $imageName); // Store the image in storage/app/public/images
+                    $imagePath = 'storage/images/' . $imageName;
+                }
             }
+            $user = new User;
+            $user->name = $request->input('name');
+            $user->email = $request->input('email');
+            $user->image = $imageName;
+            $user->save();
+            return response()->json(['message' => 'User created successfully'], 200);
+        } catch (\Exception $e) {
+            Log::error('#### UserController -> store() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
         }
-        $user = new User;
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->breed = $request->input('breed');
-        $user->petname = $request->input('petname');
-        $user->image = $imageName;
-        $user->save();
-        return response()->json(['message' => 'User created successfully'], 200);
     }
     /**
      * 
@@ -73,7 +84,6 @@ class Usercontroller extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        // dd($Users,$id);
         return view('profile.viewuser', compact('user'));
     }
     /**
@@ -81,48 +91,59 @@ class Usercontroller extends Controller
      */
     public function edit($id)
     {
-        $user = User::find($id);
-        if (!$user) {
-            return abort(404);
+        if (!auth_permission_check('Edit User')) return redirect()->back();
+        try {
+            //code...
+            $user = User::find($id);
+            if (!$user) {
+                return abort(404);
+            }
+            return view('admin.user.edituser', compact('user'));
+        } catch (\Exception $e) {
+            Log::error('#### UserController -> edit() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
         }
-        return view('admin.user.edituser', compact('user'));
     }
     /**
      * Update the specified resource in storage.
      */
 
     public function update(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'petname' => 'required',
-            'breed' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6048',
-        ]);
+    {    
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:6048',
+            ]);
 
-        $user = User::findOrFail($request->id);
-        $user->name = $request->name;
-        // $user->email = Crypt::encryptString($request->email);
-        // $user->email = Crypt::decryptString($request->email);
-        $user->email = $request->email;
-        $user->petname = $request->petname;
-        $user->breed = $request->breed;
-
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/images', $imageName);
-            $user->image =$imageName;
-        }
-        $user->save();
-        return redirect()->route('userindex');
+            $user = User::findOrFail($request->id);
+            $user->name = $request->name;
+            $user->email = $request->email;
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = time() . '.' . $image->getClientOriginalExtension();
+                $image->storeAs('public/images', $imageName);
+                $user->image = $imageName;
+            }
+            $user->save();
+            return redirect()->route('userindex');
+            
+        
     }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy($id)
     {
-        User::find($id)->delete();;
+        if (!auth_permission_check('Delete User')) return redirect()->back(); 
+        try { 
+            //code...
+            User::find($id)->delete();
+        } catch (\Exception $e) {
+            Log::error('#### UserController -> destroy() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 }

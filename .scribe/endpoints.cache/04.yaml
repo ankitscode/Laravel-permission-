@@ -17,7 +17,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer ak5V1cE6846eZhvgP3dafbD'
+      Authorization: 'Bearer 8g1kcZa5vha6Eed4P3fV6bD'
       Content-Type: application/json
       Accept: application/json
     urlParameters:
@@ -25,13 +25,13 @@ endpoints:
         name: id
         description: 'The ID of the doctor to delete.'
         required: true
-        example: dolorem
+        example: enim
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanUrlParameters:
-      id: dolorem
+      id: enim
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -78,7 +78,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ak5V1cE6846eZhvgP3dafbD'
+      - 'Bearer 8g1kcZa5vha6Eed4P3fV6bD'
     controller: null
     method: null
     route: null
@@ -97,7 +97,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer hDf1a3e6aZ4dbgV5cP8E6vk'
+      Authorization: 'Bearer ED1Vv6fhbeda3kPZ8645acg'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -140,7 +140,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer hDf1a3e6aZ4dbgV5cP8E6vk'
+      - 'Bearer ED1Vv6fhbeda3kPZ8645acg'
     controller: null
     method: null
     route: null
@@ -159,7 +159,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer Zb3EeP58hckfd6V61gavDa4'
+      Authorization: 'Bearer 5DVh4k6aacEP1veZbf68g3d'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -171,7 +171,7 @@ endpoints:
         name: name
         description: 'The name of the user.'
         required: true
-        example: officia
+        example: ea
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -180,7 +180,7 @@ endpoints:
         name: email
         description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
         required: true
-        example: marilyne57@example.org
+        example: cesar21@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -189,7 +189,7 @@ endpoints:
         name: patient_name
         description: 'The patient_name(pet name).'
         required: true
-        example: magni
+        example: odit
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -198,7 +198,7 @@ endpoints:
         name: degree
         description: 'The degree of the doctor.'
         required: true
-        example: repudiandae
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -207,17 +207,17 @@ endpoints:
         name: treatment
         description: 'The treatment name for the pet.'
         required: true
-        example: dolor
+        example: sint
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: officia
-      email: marilyne57@example.org
-      patient_name: magni
-      degree: repudiandae
-      treatment: dolor
+      name: ea
+      email: cesar21@example.com
+      patient_name: odit
+      degree: et
+      treatment: sint
     fileParameters: []
     responses:
       -
@@ -273,7 +273,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Zb3EeP58hckfd6V61gavDa4'
+      - 'Bearer 5DVh4k6aacEP1veZbf68g3d'
     controller: null
     method: null
     route: null
@@ -292,7 +292,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer k63dZEe5cD46aVf8bgv1ahP'
+      Authorization: 'Bearer 456gfa3ePZhdvDc1kE68Vab'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -304,7 +304,7 @@ endpoints:
         name: name
         description: 'The name of the doctor.'
         required: true
-        example: deleniti
+        example: consectetur
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -313,7 +313,7 @@ endpoints:
         name: email
         description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
         required: true
-        example: dare.ralph@example.com
+        example: brakus.susanna@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -322,7 +322,7 @@ endpoints:
         name: patient_name
         description: 'The patient_name(pet name).'
         required: true
-        example: voluptatem
+        example: non
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -331,7 +331,7 @@ endpoints:
         name: degree
         description: 'The degree of the doctor.'
         required: true
-        example: et
+        example: alias
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -340,17 +340,17 @@ endpoints:
         name: treatment
         description: 'The treatment name for the pet.'
         required: true
-        example: rerum
+        example: aut
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: deleniti
-      email: dare.ralph@example.com
-      patient_name: voluptatem
-      degree: et
-      treatment: rerum
+      name: consectetur
+      email: brakus.susanna@example.com
+      patient_name: non
+      degree: alias
+      treatment: aut
     fileParameters: []
     responses:
       -
@@ -406,7 +406,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer k63dZEe5cD46aVf8bgv1ahP'
+      - 'Bearer 456gfa3ePZhdvDc1kE68Vab'
     controller: null
     method: null
     route: null

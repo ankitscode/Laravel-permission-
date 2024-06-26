@@ -26,6 +26,7 @@ paths:
                   user:
                     name: 'John Doe'
                     email: johndoe@example.com
+                    image: 144875860.jpg
                     created_at: '2024-06-24T12:34:56Z'
                     updated_at: '2024-06-24T12:34:56Z'
                 properties:
@@ -44,6 +45,9 @@ paths:
                       email:
                         type: string
                         example: johndoe@example.com
+                      image:
+                        type: string
+                        example: 144875860.jpg
                       created_at:
                         type: string
                         example: '2024-06-24T12:34:56Z'
@@ -264,7 +268,7 @@ paths:
                 image:
                   type: string
                   description: 'The base64 encoded image string.'
-                  example: quibusdam
+                  example: dolore
               required:
                 - image
   /api/login:
@@ -354,11 +358,11 @@ paths:
                 email:
                   type: string
                   description: 'valid email address The email of the user.'
-                  example: annabell.rogahn@example.org
+                  example: vhane@example.org
                 password:
                   type: string
                   description: 'min:8 The password of the user.'
-                  example: ruC|@LNV
+                  example: 'igbf?uQ;i#B#pnfWz'
               required:
                 - email
                 - password
@@ -433,15 +437,15 @@ paths:
                 name:
                   type: string
                   description: 'The name of the user.'
-                  example: enim
+                  example: repellendus
                 email:
                   type: string
                   description: 'valid email address The email of the user.'
-                  example: reggie.hagenes@example.com
+                  example: sabrina.thompson@example.com
                 password:
                   type: string
                   description: 'min:8 The password of the user.'
-                  example: "--<a,IK'Kk%G2"
+                  example: '`qlhsx1XRDE'
               required:
                 - name
                 - email
@@ -517,15 +521,15 @@ paths:
                 name:
                   type: string
                   description: 'The name of the user.'
-                  example: nam
+                  example: accusantium
                 email:
                   type: string
                   description: 'valid email address The email of the user.'
-                  example: kbartoletti@example.com
+                  example: rdickinson@example.com
                 password:
                   type: string
                   description: 'min:8 The password of the user.'
-                  example: '=%;S6Oo!MzxJv|SD'
+                  example: '*;xxS-s@\Y{i(w'
               required:
                 - name
                 - email
@@ -617,11 +621,11 @@ paths:
                 email:
                   type: string
                   description: 'valid email address The email of the user.'
-                  example: jammie21@example.com
+                  example: norwood34@example.net
                 password:
                   type: string
                   description: 'min:8 The password of the user.'
-                  example: 5Z2g%.M
+                  example: 'FfOr"?9v*%'
               required:
                 - email
                 - password
@@ -643,6 +647,7 @@ paths:
                   data:
                     name: 'John Doe'
                     email: johndoe@example.com
+                    image: 144875860.jpg
                     created_at: '2024-06-24T12:34:56Z'
                     updated_at: '2024-06-24T12:34:56Z'
                   message: 'get user profile successfully'
@@ -659,6 +664,9 @@ paths:
                       email:
                         type: string
                         example: johndoe@example.com
+                      image:
+                        type: string
+                        example: 144875860.jpg
                       created_at:
                         type: string
                         example: '2024-06-24T12:34:56Z'
@@ -701,6 +709,7 @@ paths:
                   data:
                     name: 'John Doe'
                     email: johndoe@example.com
+                    image: 1777675756.jpg
                     created_at: '2024-06-24T12:34:56Z'
                     updated_at: '2024-06-24T12:34:56Z'
                 properties:
@@ -719,6 +728,9 @@ paths:
                       email:
                         type: string
                         example: johndoe@example.com
+                      image:
+                        type: string
+                        example: 1777675756.jpg
                       created_at:
                         type: string
                         example: '2024-06-24T12:34:56Z'
@@ -761,18 +773,22 @@ paths:
       requestBody:
         required: true
         content:
-          application/json:
+          multipart/form-data:
             schema:
               type: object
               properties:
                 name:
                   type: string
                   description: 'The name of the user.'
-                  example: quia
+                  example: iste
+                image:
+                  type: string
+                  format: binary
+                  description: 'Must be an image. Must not be greater than 6048 kilobytes.'
                 email:
                   type: string
-                  description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
-                  example: nigel.hartmann@example.org
+                  description: "valid email address The email of the user. Must be unique (ignoring current user's ID).\n* @bodyParam image File required the image should be jpg,jpeg,svg,png."
+                  example: herzog.unique@example.com
               required:
                 - name
                 - email
@@ -850,7 +866,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user to delete.'
-        example: eaque
+        example: suscipit
         required: true
         schema:
           type: string
@@ -864,39 +880,10 @@ paths:
         200:
           description: ''
           content:
-            application/json:
+            text/plain:
               schema:
-                type: object
-                example:
-                  status: true
-                  message: 'User Created successfully'
-                  data:
-                    name: 'John Doe'
-                    email: johndoe@example.com
-                    created_at: '2024-06-24T12:34:56Z'
-                    updated_at: '2024-06-24T12:34:56Z'
-                properties:
-                  status:
-                    type: boolean
-                    example: true
-                  message:
-                    type: string
-                    example: 'User Created successfully'
-                  data:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        example: 'John Doe'
-                      email:
-                        type: string
-                        example: johndoe@example.com
-                      created_at:
-                        type: string
-                        example: '2024-06-24T12:34:56Z'
-                      updated_at:
-                        type: string
-                        example: '2024-06-24T12:34:56Z'
+                type: string
+                example: "{\n    \"status\": true,\n    \"message\": \"User Created successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"image':17777868.jpg,\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}"
         401:
           description: ''
           content:
@@ -940,13 +927,18 @@ paths:
                 name:
                   type: string
                   description: 'The name of the user.'
-                  example: expedita
+                  example: accusamus
+                image:
+                  type: File
+                  description: 'the image should be jpg,jpeg,svg,png.'
+                  example: et
                 email:
                   type: string
                   description: "valid email address The email of the user. Must be unique (ignoring current user's ID)."
-                  example: wdamore@example.org
+                  example: ycassin@example.com
               required:
                 - name
+                - image
                 - email
   /api/doctorprofiledelete:
     post:
@@ -1030,7 +1022,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the doctor to delete.'
-        example: dolorem
+        example: enim
         required: true
         schema:
           type: string
@@ -1197,23 +1189,23 @@ paths:
                 name:
                   type: string
                   description: 'The name of the user.'
-                  example: officia
+                  example: ea
                 email:
                   type: string
                   description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
-                  example: marilyne57@example.org
+                  example: cesar21@example.com
                 patient_name:
                   type: string
                   description: 'The patient_name(pet name).'
-                  example: magni
+                  example: odit
                 degree:
                   type: string
                   description: 'The degree of the doctor.'
-                  example: repudiandae
+                  example: et
                 treatment:
                   type: string
                   description: 'The treatment name for the pet.'
-                  example: dolor
+                  example: sint
               required:
                 - name
                 - email
@@ -1314,23 +1306,23 @@ paths:
                 name:
                   type: string
                   description: 'The name of the doctor.'
-                  example: deleniti
+                  example: consectetur
                 email:
                   type: string
                   description: "valid email address The email of the doctor. Must be unique (ignoring current doctor's ID)."
-                  example: dare.ralph@example.com
+                  example: brakus.susanna@example.com
                 patient_name:
                   type: string
                   description: 'The patient_name(pet name).'
-                  example: voluptatem
+                  example: non
                 degree:
                   type: string
                   description: 'The degree of the doctor.'
-                  example: et
+                  example: alias
                 treatment:
                   type: string
                   description: 'The treatment name for the pet.'
-                  example: rerum
+                  example: aut
               required:
                 - name
                 - email

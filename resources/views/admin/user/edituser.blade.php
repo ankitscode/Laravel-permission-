@@ -56,26 +56,6 @@
                                     @enderror
                                 </span>
                             </div>
-                            <div class="py-1">
-                                <label for="" class="from-label">Pet Name</label>
-                                <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="petname" name="petname" required value="{{ $user->petname }}">
-                                <span class="text-danger">
-                                    @error('name')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </span>
-                            </div>
-                            <div class="py-1">
-                                <label for="" class="form-label">breed</label>
-                                <input type="text" class="form-control @error('degree') is-invalid @enderror"
-                                    id="breed" name="breed" required value="{{ $user->breed }}">
-                                <span class="text-danger">
-                                    @error('breed')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </span>
-                            </div>
                             <button type="submit" class="btn btn-primary mb-2" id="formsubmit">Add</button>
                     </form>
                 </div>

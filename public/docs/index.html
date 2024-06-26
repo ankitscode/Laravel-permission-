@@ -199,7 +199,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/logout" \
-    --header "Authorization: Bearer abEc1Dkh368aVe64dfgvP5Z" \
+    --header "Authorization: Bearer 1P8Zc5ehEf6gd6baD3kaV4v" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -210,7 +210,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 );
 
 const headers = {
-    "Authorization": "Bearer abEc1Dkh368aVe64dfgvP5Z",
+    "Authorization": "Bearer 1P8Zc5ehEf6gd6baD3kaV4v",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -234,6 +234,7 @@ fetch(url, {
     &quot;user&quot;: {
         &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;johndoe@example.com&quot;,
+        &quot;image&quot;: &quot;144875860.jpg&quot;,
         &quot;created_at&quot;: &quot;2024-06-24T12:34:56Z&quot;,
         &quot;updated_at&quot;: &quot;2024-06-24T12:34:56Z&quot;
     }
@@ -296,10 +297,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-logout"
-               value="Bearer abEc1Dkh368aVe64dfgvP5Z"
+               value="Bearer 1P8Zc5ehEf6gd6baD3kaV4v"
                data-component="header">
     <br>
-<p>Example: <code>Bearer abEc1Dkh368aVe64dfgvP5Z</code></p>
+<p>Example: <code>Bearer 1P8Zc5ehEf6gd6baD3kaV4v</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -340,7 +341,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorprofilelogout" \
-    --header "Authorization: Bearer dga3V6h8516vkafbcEDe4ZP" \
+    --header "Authorization: Bearer ZcegDa45fP13VEahbvd66k8" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -351,7 +352,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer dga3V6h8516vkafbcEDe4ZP",
+    "Authorization": "Bearer ZcegDa45fP13VEahbvd66k8",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -437,10 +438,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorprofilelogout"
-               value="Bearer dga3V6h8516vkafbcEDe4ZP"
+               value="Bearer ZcegDa45fP13VEahbvd66k8"
                data-component="header">
     <br>
-<p>Example: <code>Bearer dga3V6h8516vkafbcEDe4ZP</code></p>
+<p>Example: <code>Bearer ZcegDa45fP13VEahbvd66k8</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -485,11 +486,11 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/image" \
-    --header "Authorization: Bearer 8bDZ16da6EVvachkf345gPe" \
+    --header "Authorization: Bearer EhcaebZf513PV48a66gvdkD" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"image\": \"quibusdam\"
+    \"image\": \"dolore\"
 }"
 </code></pre></div>
 
@@ -500,13 +501,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer 8bDZ16da6EVvachkf345gPe",
+    "Authorization": "Bearer EhcaebZf513PV48a66gvdkD",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "image": "quibusdam"
+    "image": "dolore"
 };
 
 fetch(url, {
@@ -603,10 +604,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-image"
-               value="Bearer 8bDZ16da6EVvachkf345gPe"
+               value="Bearer EhcaebZf513PV48a66gvdkD"
                data-component="header">
     <br>
-<p>Example: <code>Bearer 8bDZ16da6EVvachkf345gPe</code></p>
+<p>Example: <code>Bearer EhcaebZf513PV48a66gvdkD</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -637,10 +638,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="image"                data-endpoint="POSTapi-image"
-               value="quibusdam"
+               value="dolore"
                data-component="body">
     <br>
-<p>The base64 encoded image string. Example: <code>quibusdam</code></p>
+<p>The base64 encoded image string. Example: <code>dolore</code></p>
         </div>
         </form>
 
@@ -664,12 +665,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/login" \
-    --header "Authorization: Bearer dk5fh46ZgPbVa3eEvD816ac" \
+    --header "Authorization: Bearer ZV1efva63gDPha8c5k4dEb6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"annabell.rogahn@example.org\",
-    \"password\": \"ruC|@LNV\"
+    \"email\": \"vhane@example.org\",
+    \"password\": \"igbf?uQ;i#B#pnfWz\"
 }"
 </code></pre></div>
 
@@ -680,14 +681,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer dk5fh46ZgPbVa3eEvD816ac",
+    "Authorization": "Bearer ZV1efva63gDPha8c5k4dEb6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "email": "annabell.rogahn@example.org",
-    "password": "ruC|@LNV"
+    "email": "vhane@example.org",
+    "password": "igbf?uQ;i#B#pnfWz"
 };
 
 fetch(url, {
@@ -772,10 +773,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-login"
-               value="Bearer dk5fh46ZgPbVa3eEvD816ac"
+               value="Bearer ZV1efva63gDPha8c5k4dEb6"
                data-component="header">
     <br>
-<p>Example: <code>Bearer dk5fh46ZgPbVa3eEvD816ac</code></p>
+<p>Example: <code>Bearer ZV1efva63gDPha8c5k4dEb6</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -806,10 +807,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-login"
-               value="annabell.rogahn@example.org"
+               value="vhane@example.org"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Example: <code>annabell.rogahn@example.org</code></p>
+<p>valid email address The email of the user. Example: <code>vhane@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -817,10 +818,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-login"
-               value="ruC|@LNV"
+               value="igbf?uQ;i#B#pnfWz"
                data-component="body">
     <br>
-<p>min:8 The password of the user. Example: <code>ruC|@LNV</code></p>
+<p>min:8 The password of the user. Example: <code>igbf?uQ;i#B#pnfWz</code></p>
         </div>
         </form>
 
@@ -839,13 +840,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/register" \
-    --header "Authorization: Bearer e8g16kbD34Zhd6Pf5aVcvEa" \
+    --header "Authorization: Bearer 1cZaV4h6EgvdD83fa5Pb6ek" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"enim\",
-    \"email\": \"reggie.hagenes@example.com\",
-    \"password\": \"--&lt;a,IK\'Kk%G2\"
+    \"name\": \"repellendus\",
+    \"email\": \"sabrina.thompson@example.com\",
+    \"password\": \"`qlhsx1XRDE\"
 }"
 </code></pre></div>
 
@@ -856,15 +857,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer e8g16kbD34Zhd6Pf5aVcvEa",
+    "Authorization": "Bearer 1cZaV4h6EgvdD83fa5Pb6ek",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "enim",
-    "email": "reggie.hagenes@example.com",
-    "password": "--&lt;a,IK'Kk%G2"
+    "name": "repellendus",
+    "email": "sabrina.thompson@example.com",
+    "password": "`qlhsx1XRDE"
 };
 
 fetch(url, {
@@ -941,10 +942,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-register"
-               value="Bearer e8g16kbD34Zhd6Pf5aVcvEa"
+               value="Bearer 1cZaV4h6EgvdD83fa5Pb6ek"
                data-component="header">
     <br>
-<p>Example: <code>Bearer e8g16kbD34Zhd6Pf5aVcvEa</code></p>
+<p>Example: <code>Bearer 1cZaV4h6EgvdD83fa5Pb6ek</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -975,10 +976,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-register"
-               value="enim"
+               value="repellendus"
                data-component="body">
     <br>
-<p>The name of the user. Example: <code>enim</code></p>
+<p>The name of the user. Example: <code>repellendus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -986,10 +987,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-register"
-               value="reggie.hagenes@example.com"
+               value="sabrina.thompson@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Example: <code>reggie.hagenes@example.com</code></p>
+<p>valid email address The email of the user. Example: <code>sabrina.thompson@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -997,10 +998,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-register"
-               value="--<a,IK'Kk%G2"
+               value="`qlhsx1XRDE"
                data-component="body">
     <br>
-<p>min:8 The password of the user. Example: <code>--&lt;a,IK'Kk%G2</code></p>
+<p>min:8 The password of the user. Example: <code>`qlhsx1XRDE</code></p>
         </div>
         </form>
 
@@ -1020,13 +1021,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorregister" \
-    --header "Authorization: Bearer ghZv6dfDkEP6V431b8ae5ca" \
+    --header "Authorization: Bearer PV86gE5D31ef6vkZb4hacad" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"nam\",
-    \"email\": \"kbartoletti@example.com\",
-    \"password\": \"=%;S6Oo!MzxJv|SD\"
+    \"name\": \"accusantium\",
+    \"email\": \"rdickinson@example.com\",
+    \"password\": \"*;xxS-s@\\\\Y{i(w\"
 }"
 </code></pre></div>
 
@@ -1037,15 +1038,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer ghZv6dfDkEP6V431b8ae5ca",
+    "Authorization": "Bearer PV86gE5D31ef6vkZb4hacad",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "nam",
-    "email": "kbartoletti@example.com",
-    "password": "=%;S6Oo!MzxJv|SD"
+    "name": "accusantium",
+    "email": "rdickinson@example.com",
+    "password": "*;xxS-s@\\Y{i(w"
 };
 
 fetch(url, {
@@ -1122,10 +1123,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorregister"
-               value="Bearer ghZv6dfDkEP6V431b8ae5ca"
+               value="Bearer PV86gE5D31ef6vkZb4hacad"
                data-component="header">
     <br>
-<p>Example: <code>Bearer ghZv6dfDkEP6V431b8ae5ca</code></p>
+<p>Example: <code>Bearer PV86gE5D31ef6vkZb4hacad</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1156,10 +1157,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-doctorregister"
-               value="nam"
+               value="accusantium"
                data-component="body">
     <br>
-<p>The name of the user. Example: <code>nam</code></p>
+<p>The name of the user. Example: <code>accusantium</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1167,10 +1168,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-doctorregister"
-               value="kbartoletti@example.com"
+               value="rdickinson@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Example: <code>kbartoletti@example.com</code></p>
+<p>valid email address The email of the user. Example: <code>rdickinson@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1178,10 +1179,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-doctorregister"
-               value="=%;S6Oo!MzxJv|SD"
+               value="*;xxS-s@\Y{i(w"
                data-component="body">
     <br>
-<p>min:8 The password of the user. Example: <code>=%;S6Oo!MzxJv|SD</code></p>
+<p>min:8 The password of the user. Example: <code>*;xxS-s@\Y{i(w</code></p>
         </div>
         </form>
 
@@ -1200,12 +1201,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorlogin" \
-    --header "Authorization: Bearer 5vfaaVhdE6Pe38k1DZb4g6c" \
+    --header "Authorization: Bearer PEbv8aV31g6akZcDe46fhd5" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"jammie21@example.com\",
-    \"password\": \"5Z2g%.M\"
+    \"email\": \"norwood34@example.net\",
+    \"password\": \"FfOr\\\"?9v*%\"
 }"
 </code></pre></div>
 
@@ -1216,14 +1217,14 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer 5vfaaVhdE6Pe38k1DZb4g6c",
+    "Authorization": "Bearer PEbv8aV31g6akZcDe46fhd5",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "email": "jammie21@example.com",
-    "password": "5Z2g%.M"
+    "email": "norwood34@example.net",
+    "password": "FfOr\"?9v*%"
 };
 
 fetch(url, {
@@ -1308,10 +1309,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorlogin"
-               value="Bearer 5vfaaVhdE6Pe38k1DZb4g6c"
+               value="Bearer PEbv8aV31g6akZcDe46fhd5"
                data-component="header">
     <br>
-<p>Example: <code>Bearer 5vfaaVhdE6Pe38k1DZb4g6c</code></p>
+<p>Example: <code>Bearer PEbv8aV31g6akZcDe46fhd5</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1342,10 +1343,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-doctorlogin"
-               value="jammie21@example.com"
+               value="norwood34@example.net"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Example: <code>jammie21@example.com</code></p>
+<p>valid email address The email of the user. Example: <code>norwood34@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1353,10 +1354,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="password"                data-endpoint="POSTapi-doctorlogin"
-               value="5Z2g%.M"
+               value="FfOr"?9v*%"
                data-component="body">
     <br>
-<p>min:8 The password of the user. Example: <code>5Z2g%.M</code></p>
+<p>min:8 The password of the user. Example: <code>FfOr"?9v*%</code></p>
         </div>
         </form>
 
@@ -1379,7 +1380,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://127.0.0.1:8000/api/profile" \
-    --header "Authorization: Bearer 4aecd63k8Zb61EvD5VPhfag" \
+    --header "Authorization: Bearer cDa4P6vh61E3b8daf5gVkZe" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1390,7 +1391,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer 4aecd63k8Zb61EvD5VPhfag",
+    "Authorization": "Bearer cDa4P6vh61E3b8daf5gVkZe",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1413,6 +1414,7 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;johndoe@example.com&quot;,
+        &quot;image&quot;: &quot;144875860.jpg&quot;,
         &quot;created_at&quot;: &quot;2024-06-24T12:34:56Z&quot;,
         &quot;updated_at&quot;: &quot;2024-06-24T12:34:56Z&quot;
     },
@@ -1465,10 +1467,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="GETapi-profile"
-               value="Bearer 4aecd63k8Zb61EvD5VPhfag"
+               value="Bearer cDa4P6vh61E3b8daf5gVkZe"
                data-component="header">
     <br>
-<p>Example: <code>Bearer 4aecd63k8Zb61EvD5VPhfag</code></p>
+<p>Example: <code>Bearer cDa4P6vh61E3b8daf5gVkZe</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1509,14 +1511,12 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/profileupdate" \
-    --header "Authorization: Bearer D8fedE64ahk3v5PVZ1b6acg" \
-    --header "Content-Type: application/json" \
+    --header "Authorization: Bearer V1ba6a4DkhZvgP35defEc68" \
+    --header "Content-Type: multipart/form-data" \
     --header "Accept: application/json" \
-    --data "{
-    \"name\": \"quia\",
-    \"email\": \"nigel.hartmann@example.org\"
-}"
-</code></pre></div>
+    --form "name=iste"\
+    --form "email=herzog.unique@example.com"\
+    --form "image=@C:\Users\Dell\AppData\Local\Temp\php429B.tmp" </code></pre></div>
 
 
 <div class="javascript-example">
@@ -1525,20 +1525,20 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer D8fedE64ahk3v5PVZ1b6acg",
-    "Content-Type": "application/json",
+    "Authorization": "Bearer V1ba6a4DkhZvgP35defEc68",
+    "Content-Type": "multipart/form-data",
     "Accept": "application/json",
 };
 
-let body = {
-    "name": "quia",
-    "email": "nigel.hartmann@example.org"
-};
+const body = new FormData();
+body.append('name', 'iste');
+body.append('email', 'herzog.unique@example.com');
+body.append('image', document.querySelector('input[name="image"]').files[0]);
 
 fetch(url, {
     method: "POST",
     headers,
-    body: JSON.stringify(body),
+    body,
 }).then(response =&gt; response.json());</code></pre></div>
 
 </span>
@@ -1555,6 +1555,7 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;johndoe@example.com&quot;,
+        &quot;image&quot;: &quot;1777675756.jpg&quot;,
         &quot;created_at&quot;: &quot;2024-06-24T12:34:56Z&quot;,
         &quot;updated_at&quot;: &quot;2024-06-24T12:34:56Z&quot;
     }
@@ -1610,7 +1611,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <form id="form-POSTapi-profileupdate" data-method="POST"
       data-path="api/profileupdate"
       data-authed="1"
-      data-hasfiles="0"
+      data-hasfiles="1"
       data-isarraybody="0"
       autocomplete="off"
       onsubmit="event.preventDefault(); executeTryOut('POSTapi-profileupdate', this);">
@@ -1628,10 +1629,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-profileupdate"
-               value="Bearer D8fedE64ahk3v5PVZ1b6acg"
+               value="Bearer V1ba6a4DkhZvgP35defEc68"
                data-component="header">
     <br>
-<p>Example: <code>Bearer D8fedE64ahk3v5PVZ1b6acg</code></p>
+<p>Example: <code>Bearer V1ba6a4DkhZvgP35defEc68</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1639,10 +1640,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Content-Type"                data-endpoint="POSTapi-profileupdate"
-               value="application/json"
+               value="multipart/form-data"
                data-component="header">
     <br>
-<p>Example: <code>application/json</code></p>
+<p>Example: <code>multipart/form-data</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
@@ -1662,10 +1663,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-profileupdate"
-               value="quia"
+               value="iste"
                data-component="body">
     <br>
-<p>The name of the user. Example: <code>quia</code></p>
+<p>The name of the user. Example: <code>iste</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>file</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="file" style="display: none"
+                              name="image"                data-endpoint="POSTapi-profileupdate"
+               value=""
+               data-component="body">
+    <br>
+<p>Must be an image. Must not be greater than 6048 kilobytes. Example: <code>C:\Users\Dell\AppData\Local\Temp\php429B.tmp</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1673,10 +1685,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-profileupdate"
-               value="nigel.hartmann@example.org"
+               value="herzog.unique@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Must be unique (ignoring current user's ID). Example: <code>nigel.hartmann@example.org</code></p>
+<p>valid email address The email of the user. Must be unique (ignoring current user's ID).</p>
+<ul>
+<li>@bodyParam image File required the image should be jpg,jpeg,svg,png. Example: <code>herzog.unique@example.com</code></li>
+</ul>
         </div>
         </form>
 
@@ -1695,7 +1710,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/profiledelete" \
-    --header "Authorization: Bearer b6aDvfVk654ZdcE1eaPgh38" \
+    --header "Authorization: Bearer g6a65kvhcP48Df1ZbaVEe3d" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -1706,7 +1721,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer b6aDvfVk654ZdcE1eaPgh38",
+    "Authorization": "Bearer g6a65kvhcP48Df1ZbaVEe3d",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -1790,10 +1805,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-profiledelete"
-               value="Bearer b6aDvfVk654ZdcE1eaPgh38"
+               value="Bearer g6a65kvhcP48Df1ZbaVEe3d"
                data-component="header">
     <br>
-<p>Example: <code>Bearer b6aDvfVk654ZdcE1eaPgh38</code></p>
+<p>Example: <code>Bearer g6a65kvhcP48Df1ZbaVEe3d</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1824,10 +1839,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-profiledelete"
-               value="eaque"
+               value="suscipit"
                data-component="url">
     <br>
-<p>The ID of the user to delete. Example: <code>eaque</code></p>
+<p>The ID of the user to delete. Example: <code>suscipit</code></p>
             </div>
                     </form>
 
@@ -1846,12 +1861,13 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/profilecreate" \
-    --header "Authorization: Bearer 1vdD4a66b85ceE3hPfVkgaZ" \
+    --header "Authorization: Bearer EcdVZfPb6ke4g53hv8a1aD6" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"expedita\",
-    \"email\": \"wdamore@example.org\"
+    \"name\": \"accusamus\",
+    \"image\": \"et\",
+    \"email\": \"ycassin@example.com\"
 }"
 </code></pre></div>
 
@@ -1862,14 +1878,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer 1vdD4a66b85ceE3hPfVkgaZ",
+    "Authorization": "Bearer EcdVZfPb6ke4g53hv8a1aD6",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "expedita",
-    "email": "wdamore@example.org"
+    "name": "accusamus",
+    "image": "et",
+    "email": "ycassin@example.com"
 };
 
 fetch(url, {
@@ -1892,6 +1909,7 @@ fetch(url, {
     &quot;data&quot;: {
         &quot;name&quot;: &quot;John Doe&quot;,
         &quot;email&quot;: &quot;johndoe@example.com&quot;,
+        &quot;image&#039;:17777868.jpg,
         &quot;created_at&quot;: &quot;2024-06-24T12:34:56Z&quot;,
         &quot;updated_at&quot;: &quot;2024-06-24T12:34:56Z&quot;
     }
@@ -1965,10 +1983,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-profilecreate"
-               value="Bearer 1vdD4a66b85ceE3hPfVkgaZ"
+               value="Bearer EcdVZfPb6ke4g53hv8a1aD6"
                data-component="header">
     <br>
-<p>Example: <code>Bearer 1vdD4a66b85ceE3hPfVkgaZ</code></p>
+<p>Example: <code>Bearer EcdVZfPb6ke4g53hv8a1aD6</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -1999,10 +2017,21 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-profilecreate"
-               value="expedita"
+               value="accusamus"
                data-component="body">
     <br>
-<p>The name of the user. Example: <code>expedita</code></p>
+<p>The name of the user. Example: <code>accusamus</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>image</code></b>&nbsp;&nbsp;
+<small>File</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+                              name="image"                data-endpoint="POSTapi-profilecreate"
+               value="et"
+               data-component="body">
+    <br>
+<p>the image should be jpg,jpeg,svg,png. Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -2010,10 +2039,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-profilecreate"
-               value="wdamore@example.org"
+               value="ycassin@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the user. Must be unique (ignoring current user's ID). Example: <code>wdamore@example.org</code></p>
+<p>valid email address The email of the user. Must be unique (ignoring current user's ID). Example: <code>ycassin@example.com</code></p>
         </div>
         </form>
 
@@ -2036,7 +2065,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorprofiledelete" \
-    --header "Authorization: Bearer ak5V1cE6846eZhvgP3dafbD" \
+    --header "Authorization: Bearer 8g1kcZa5vha6Eed4P3fV6bD" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2047,7 +2076,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer ak5V1cE6846eZhvgP3dafbD",
+    "Authorization": "Bearer 8g1kcZa5vha6Eed4P3fV6bD",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2133,10 +2162,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorprofiledelete"
-               value="Bearer ak5V1cE6846eZhvgP3dafbD"
+               value="Bearer 8g1kcZa5vha6Eed4P3fV6bD"
                data-component="header">
     <br>
-<p>Example: <code>Bearer ak5V1cE6846eZhvgP3dafbD</code></p>
+<p>Example: <code>Bearer 8g1kcZa5vha6Eed4P3fV6bD</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -2167,10 +2196,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="id"                data-endpoint="POSTapi-doctorprofiledelete"
-               value="dolorem"
+               value="enim"
                data-component="url">
     <br>
-<p>The ID of the doctor to delete. Example: <code>dolorem</code></p>
+<p>The ID of the doctor to delete. Example: <code>enim</code></p>
             </div>
                     </form>
 
@@ -2189,7 +2218,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
     --get "http://127.0.0.1:8000/api/doctorprofile" \
-    --header "Authorization: Bearer hDf1a3e6aZ4dbgV5cP8E6vk" \
+    --header "Authorization: Bearer ED1Vv6fhbeda3kPZ8645acg" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
@@ -2200,7 +2229,7 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer hDf1a3e6aZ4dbgV5cP8E6vk",
+    "Authorization": "Bearer ED1Vv6fhbeda3kPZ8645acg",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
@@ -2278,10 +2307,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="GETapi-doctorprofile"
-               value="Bearer hDf1a3e6aZ4dbgV5cP8E6vk"
+               value="Bearer ED1Vv6fhbeda3kPZ8645acg"
                data-component="header">
     <br>
-<p>Example: <code>Bearer hDf1a3e6aZ4dbgV5cP8E6vk</code></p>
+<p>Example: <code>Bearer ED1Vv6fhbeda3kPZ8645acg</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -2322,15 +2351,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorprofileupdate" \
-    --header "Authorization: Bearer Zb3EeP58hckfd6V61gavDa4" \
+    --header "Authorization: Bearer 5DVh4k6aacEP1veZbf68g3d" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"officia\",
-    \"email\": \"marilyne57@example.org\",
-    \"patient_name\": \"magni\",
-    \"degree\": \"repudiandae\",
-    \"treatment\": \"dolor\"
+    \"name\": \"ea\",
+    \"email\": \"cesar21@example.com\",
+    \"patient_name\": \"odit\",
+    \"degree\": \"et\",
+    \"treatment\": \"sint\"
 }"
 </code></pre></div>
 
@@ -2341,17 +2370,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer Zb3EeP58hckfd6V61gavDa4",
+    "Authorization": "Bearer 5DVh4k6aacEP1veZbf68g3d",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "officia",
-    "email": "marilyne57@example.org",
-    "patient_name": "magni",
-    "degree": "repudiandae",
-    "treatment": "dolor"
+    "name": "ea",
+    "email": "cesar21@example.com",
+    "patient_name": "odit",
+    "degree": "et",
+    "treatment": "sint"
 };
 
 fetch(url, {
@@ -2449,10 +2478,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorprofileupdate"
-               value="Bearer Zb3EeP58hckfd6V61gavDa4"
+               value="Bearer 5DVh4k6aacEP1veZbf68g3d"
                data-component="header">
     <br>
-<p>Example: <code>Bearer Zb3EeP58hckfd6V61gavDa4</code></p>
+<p>Example: <code>Bearer 5DVh4k6aacEP1veZbf68g3d</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -2483,10 +2512,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-doctorprofileupdate"
-               value="officia"
+               value="ea"
                data-component="body">
     <br>
-<p>The name of the user. Example: <code>officia</code></p>
+<p>The name of the user. Example: <code>ea</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -2494,10 +2523,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-doctorprofileupdate"
-               value="marilyne57@example.org"
+               value="cesar21@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the doctor. Must be unique (ignoring current doctor's ID). Example: <code>marilyne57@example.org</code></p>
+<p>valid email address The email of the doctor. Must be unique (ignoring current doctor's ID). Example: <code>cesar21@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>patient_name</code></b>&nbsp;&nbsp;
@@ -2505,10 +2534,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="patient_name"                data-endpoint="POSTapi-doctorprofileupdate"
-               value="magni"
+               value="odit"
                data-component="body">
     <br>
-<p>The patient_name(pet name). Example: <code>magni</code></p>
+<p>The patient_name(pet name). Example: <code>odit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>degree</code></b>&nbsp;&nbsp;
@@ -2516,10 +2545,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="degree"                data-endpoint="POSTapi-doctorprofileupdate"
-               value="repudiandae"
+               value="et"
                data-component="body">
     <br>
-<p>The degree of the doctor. Example: <code>repudiandae</code></p>
+<p>The degree of the doctor. Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>treatment</code></b>&nbsp;&nbsp;
@@ -2527,10 +2556,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="treatment"                data-endpoint="POSTapi-doctorprofileupdate"
-               value="dolor"
+               value="sint"
                data-component="body">
     <br>
-<p>The treatment name for the pet. Example: <code>dolor</code></p>
+<p>The treatment name for the pet. Example: <code>sint</code></p>
         </div>
         </form>
 
@@ -2549,15 +2578,15 @@ You can check the Dev Tools console for debugging information.</code></pre>
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
     "http://127.0.0.1:8000/api/doctorprofilecreate" \
-    --header "Authorization: Bearer k63dZEe5cD46aVf8bgv1ahP" \
+    --header "Authorization: Bearer 456gfa3ePZhdvDc1kE68Vab" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"deleniti\",
-    \"email\": \"dare.ralph@example.com\",
-    \"patient_name\": \"voluptatem\",
-    \"degree\": \"et\",
-    \"treatment\": \"rerum\"
+    \"name\": \"consectetur\",
+    \"email\": \"brakus.susanna@example.com\",
+    \"patient_name\": \"non\",
+    \"degree\": \"alias\",
+    \"treatment\": \"aut\"
 }"
 </code></pre></div>
 
@@ -2568,17 +2597,17 @@ You can check the Dev Tools console for debugging information.</code></pre>
 );
 
 const headers = {
-    "Authorization": "Bearer k63dZEe5cD46aVf8bgv1ahP",
+    "Authorization": "Bearer 456gfa3ePZhdvDc1kE68Vab",
     "Content-Type": "application/json",
     "Accept": "application/json",
 };
 
 let body = {
-    "name": "deleniti",
-    "email": "dare.ralph@example.com",
-    "patient_name": "voluptatem",
-    "degree": "et",
-    "treatment": "rerum"
+    "name": "consectetur",
+    "email": "brakus.susanna@example.com",
+    "patient_name": "non",
+    "degree": "alias",
+    "treatment": "aut"
 };
 
 fetch(url, {
@@ -2676,10 +2705,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="Authorization" class="auth-value"               data-endpoint="POSTapi-doctorprofilecreate"
-               value="Bearer k63dZEe5cD46aVf8bgv1ahP"
+               value="Bearer 456gfa3ePZhdvDc1kE68Vab"
                data-component="header">
     <br>
-<p>Example: <code>Bearer k63dZEe5cD46aVf8bgv1ahP</code></p>
+<p>Example: <code>Bearer 456gfa3ePZhdvDc1kE68Vab</code></p>
             </div>
                                 <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
@@ -2710,10 +2739,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="name"                data-endpoint="POSTapi-doctorprofilecreate"
-               value="deleniti"
+               value="consectetur"
                data-component="body">
     <br>
-<p>The name of the doctor. Example: <code>deleniti</code></p>
+<p>The name of the doctor. Example: <code>consectetur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -2721,10 +2750,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="email"                data-endpoint="POSTapi-doctorprofilecreate"
-               value="dare.ralph@example.com"
+               value="brakus.susanna@example.com"
                data-component="body">
     <br>
-<p>valid email address The email of the doctor. Must be unique (ignoring current doctor's ID). Example: <code>dare.ralph@example.com</code></p>
+<p>valid email address The email of the doctor. Must be unique (ignoring current doctor's ID). Example: <code>brakus.susanna@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>patient_name</code></b>&nbsp;&nbsp;
@@ -2732,10 +2761,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="patient_name"                data-endpoint="POSTapi-doctorprofilecreate"
-               value="voluptatem"
+               value="non"
                data-component="body">
     <br>
-<p>The patient_name(pet name). Example: <code>voluptatem</code></p>
+<p>The patient_name(pet name). Example: <code>non</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>degree</code></b>&nbsp;&nbsp;
@@ -2743,10 +2772,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="degree"                data-endpoint="POSTapi-doctorprofilecreate"
-               value="et"
+               value="alias"
                data-component="body">
     <br>
-<p>The degree of the doctor. Example: <code>et</code></p>
+<p>The degree of the doctor. Example: <code>alias</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>treatment</code></b>&nbsp;&nbsp;
@@ -2754,10 +2783,10 @@ You can check the Dev Tools console for debugging information.</code></pre>
  &nbsp;
                 <input type="text" style="display: none"
                               name="treatment"                data-endpoint="POSTapi-doctorprofilecreate"
-               value="rerum"
+               value="aut"
                data-component="body">
     <br>
-<p>The treatment name for the pet. Example: <code>rerum</code></p>
+<p>The treatment name for the pet. Example: <code>aut</code></p>
         </div>
         </form>
 

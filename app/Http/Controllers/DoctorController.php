@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
 
 class Doctorcontroller extends Controller
@@ -42,22 +45,30 @@ class Doctorcontroller extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'degree' => 'required|string',
-            'patient_name' => 'required|string',
-            'treatment' => 'required|string',
-        ]);
-        // Create a new doctor
-        $doctor = new Doctor;
-        $doctor->name = $request->input('name');
-        $doctor->degree = $request->input('degree');
-        $doctor->email = $request->input('email');
-        $doctor->treatment = $request->input('treatment');
-        $doctor->patient_name = $request->input('patient_name');
-        $doctor->save();
-        return response()->json(['message' => 'Doctor created successfully'], 200);
+        if (!auth_permission_check('create','doctor')) return redirect()->back();
+        try {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'degree' => 'required|string',
+                'patient_name' => 'required|string',
+                'treatment' => 'required|string',
+            ]);
+            // Create a new doctor
+            $doctor = new Doctor;
+            $doctor->name = $request->input('name');
+            $doctor->degree = $request->input('degree');
+            $doctor->email = $request->input('email');
+            $doctor->treatment = $request->input('treatment');
+            $doctor->patient_name = $request->input('patient_name');
+            $doctor->save();
+            return response()->json(['message' => 'Doctor created successfully'], 200);
+            //code...
+        } catch (\Exception $e) {
+            Log::error('#### DoctorRoleController -> store() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -75,8 +86,16 @@ class Doctorcontroller extends Controller
      */
     public function edit($id)
     {
-        $Doctor = Doctor::find($id);
-        return response()->json($Doctor);
+        if (!auth_permission_check('Edit', 'doctor')) return redirect()->back();
+        try {
+            //code...
+            $Doctor = Doctor::find($id);
+            return response()->json($Doctor);
+        } catch (\Exception $e) {
+            Log::error('#### DoctorRoleController -> edit() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -84,21 +103,30 @@ class Doctorcontroller extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'degree' => 'required|string',
-            'patient_name' => 'required|string',
-            'treatment' => 'required|string',
-        ]);
-        $doctor = Doctor::find($id);
-        $doctor->name = $request->input('name');
-        $doctor->degree = $request->input('degree');
-        $doctor->email = $request->input('email');
-        $doctor->treatment = $request->input('treatment');
-        $doctor->patient_name = $request->input('patient_name');
-        $doctor->save();
-        return response()->json(['success' => 'doctor updated successfully']);
+        if (!auth_permission_check('Edit', 'doctor')) return redirect()->back();
+
+        try {
+            $request->validate([
+                'name' => 'required',
+                'email' => 'required|email',
+                'degree' => 'required|string',
+                'patient_name' => 'required|string',
+                'treatment' => 'required|string',
+            ]);
+
+            $doctor = Doctor::find($id);
+            $doctor->name = $request->input('name');
+            $doctor->degree = $request->input('degree');
+            $doctor->email = $request->input('email');
+            $doctor->treatment = $request->input('treatment');
+            $doctor->patient_name = $request->input('patient_name');
+            $doctor->save();
+            return response()->json(['success' => 'doctor updated successfully']);
+        } catch (\Exception $e) {
+            Log::error('#### DoctorController -> update() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 
     /**
@@ -106,15 +134,23 @@ class Doctorcontroller extends Controller
      */
     public function destroy($id)
     {
-        $doctor = Doctor::find($id);
-        $doctor->delete();
-        return redirect()->route('doctorindex');
+        if (!auth_permission_check('Edit','doctor')) return redirect()->back();
+        try {
+            //code...
+            $doctor = Doctor::find($id);
+            $doctor->delete();
+            return redirect()->route('doctorindex');
+        }catch (\Exception $e) {
+            Log::error('#### DoctorController -> destroy() #### ' . $e->getMessage());
+            Session::flash('alert-error', __('message.something_went_wrong'));
+            return redirect()->back();
+        }
     }
 
-    public function change_Password(){
+    public function change_Password()
+    {
 
         return view('admin.user.changepassword');
-
     }
 
     // public function 

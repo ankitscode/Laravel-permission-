@@ -28,7 +28,7 @@ class ManageRoleController extends Controller
 
     public function create()
     {
-        if (!auth_permission_check('Create Role')) return redirect()->back();
+        if (!auth_permission_check('Create Role','web')) return redirect()->back();
         try {
             $permission = CommenController::showRolePermission(null, 1);
             return view('admin.role.create', compact('permission'));

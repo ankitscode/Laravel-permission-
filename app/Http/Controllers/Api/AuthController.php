@@ -11,14 +11,14 @@ namespace App\Http\Controllers\Api;
 use Intervention\Image\Facades\Image;
 use App\Models\User;
 use Illuminate\Http\Request;
-// use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Contracts\Validation\Rule;
+// use Illuminate\Contracts\Validation\Rule;
 
 class AuthController extends Controller
 {
@@ -145,6 +145,7 @@ class AuthController extends Controller
      *     "user": {
      *         "name": "John Doe",
      *         "email": "johndoe@example.com",
+     *          "image" :  "144875860.jpg",
      *         "created_at": "2024-06-24T12:34:56Z",
      *         "updated_at": "2024-06-24T12:34:56Z"
      *     }
@@ -199,6 +200,7 @@ class AuthController extends Controller
      *     "data": {
      *         "name": "John Doe",
      *         "email": "johndoe@example.com",
+     *         "image" :  "144875860.jpg",
      *         "created_at": "2024-06-24T12:34:56Z",
      *         "updated_at": "2024-06-24T12:34:56Z"
      *     },
@@ -242,13 +244,14 @@ class AuthController extends Controller
      * @group User Management
      * @bodyParam name string required The name of the user.
      * @bodyParam email string required valid email address The email of the user. Must be unique (ignoring current user's ID).
-     * 
+     * @bodyParam image File required the image should be jpg,jpeg,svg,png.
      * @response {
      *     "status": true,
      *     "message": "User updated successfully",
      *     "data": {
      *         "name": "John Doe",
      *         "email": "johndoe@example.com",
+     *          "image": "1777675756.jpg",
      *         "created_at": "2024-06-24T12:34:56Z",
      *         "updated_at": "2024-06-24T12:34:56Z"
      *     }
@@ -277,7 +280,9 @@ class AuthController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore(Auth::id())],
+
         ]);
 
         if ($validator->fails()) {
@@ -288,9 +293,18 @@ class AuthController extends Controller
             if (!$user) {
                 return response()->json(['error' => 'Unauthenticated.'], 401);
             }
+            if ($request->hasFile('image')) {
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('public/images', $imageName); // Store the image in storage/app/public/images
+                    $imagePath = 'storage/images/' . $imageName;
+                }
+            }
             $user = User::find($request->id);
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->image = $imageName;
             $user->save();
             return response()->json([
                 'status' => true,
@@ -350,19 +364,20 @@ class AuthController extends Controller
         }
     }
 
-      /**
+    /**
      * Created the authenticated user's profile.
      *
      * @group User Management
      * @bodyParam name string required The name of the user.
      * @bodyParam email string required valid email address The email of the user. Must be unique (ignoring current user's ID).
-     * 
+     * @bodyParam image File required the image should be jpg,jpeg,svg,png.
      * @response {
      *     "status": true,
      *     "message": "User Created successfully",
      *     "data": {
      *         "name": "John Doe",
      *         "email": "johndoe@example.com",
+     *         "image':17777868.jpg,
      *         "created_at": "2024-06-24T12:34:56Z",
      *         "updated_at": "2024-06-24T12:34:56Z"
      *     }
@@ -390,7 +405,8 @@ class AuthController extends Controller
     public function profileCreate(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'], 
+            'image' => ['image', 'mimes:jpeg,png,jpg,gif,svg', 'max:6048'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique('users')->ignore(Auth::id())],
         ]);
         if ($validator->fails()) {
@@ -401,9 +417,18 @@ class AuthController extends Controller
             if (!$user) {
                 return response()->json(['error' => 'Unauthenticated.'], 401);
             }
+            if ($request->hasFile('image')) {
+                if ($request->hasFile('image')) {
+                    $image = $request->file('image');
+                    $imageName = time() . '.' . $image->getClientOriginalExtension();
+                    $image->storeAs('public/images', $imageName); // Store the image in storage/app/public/images
+                    $imagePath = 'storage/images/' . $imageName;
+                }
+            }
             $user = new User;
             $user->name = $request->name;
             $user->email = $request->email;
+            $user->image = $imageName;
             $user->save();
             return response()->json([
                 'status' => true,
@@ -415,43 +440,43 @@ class AuthController extends Controller
             return response()->json(['error' => 'Something went wrong.'], 500);
         }
     }
-/**
- * Save an image from base64 encoded string.
- *
- * @group Base64 to Image 
- * @bodyParam image string required The base64 encoded image string.
- * 
- * @response {
- *     "status": true,
- *     "message": "converted successfully",
- *     "data": {
- *         "type": "image/jpeg",
- *         "file_size": 12345,
- *         "name": "1234567890.jpg",
- *         "thumbnail_name": "thumbnail_1234567890.jpg"
- *     }
- * }
- * 
- * @response 401 {
- *     "error": "Unauthenticated."
- * }
- * 
- * @response 422 {
- *     "errors": {
- *         "image": [
- *             "The image must be a string."
- *         ]
- *     }
- * }
- * 
- * @response 500 {
- *     "status": false,
- *     "message": "converted not successfully"
- * }
- * 
- * @param \Illuminate\Http\Request $request
- * @return \Illuminate\Http\JsonResponse
- */
+    /**
+     * Save an image from base64 encoded string.
+     *
+     * @group Base64 to Image 
+     * @bodyParam image string required The base64 encoded image string.
+     * 
+     * @response {
+     *     "status": true,
+     *     "message": "converted successfully",
+     *     "data": {
+     *         "type": "image/jpeg",
+     *         "file_size": 12345,
+     *         "name": "1234567890.jpg",
+     *         "thumbnail_name": "thumbnail_1234567890.jpg"
+     *     }
+     * }
+     * 
+     * @response 401 {
+     *     "error": "Unauthenticated."
+     * }
+     * 
+     * @response 422 {
+     *     "errors": {
+     *         "image": [
+     *             "The image must be a string."
+     *         ]
+     *     }
+     * }
+     * 
+     * @response 500 {
+     *     "status": false,
+     *     "message": "converted not successfully"
+     * }
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function saveImageBase64(Request $request)
     {
         $validator = Validator::make($request->all(), [

@@ -16,7 +16,7 @@ use Laravel\Passport\Token;
 use App\Models\Pet;
 
 
-class User extends Authenticatable 
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable, HasRoles;
 

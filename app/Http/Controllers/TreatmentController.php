@@ -154,7 +154,7 @@ class TreatmentController extends Controller
      */
     public function destroy(string $id)
     {
-        if (!auth_permission_check('View','doctor')) return redirect()->back();
+        if (!auth_permission_check('Edit','doctor')) return redirect()->back();
         try {
             //code...
             $Treatment = Treatment::with('pets', 'doctors')->find($id)->delete();

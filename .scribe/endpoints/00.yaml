@@ -15,7 +15,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer dk5fh46ZgPbVa3eEvD816ac'
+      Authorization: 'Bearer ZV1efva63gDPha8c5k4dEb6'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -27,7 +27,7 @@ endpoints:
         name: email
         description: 'valid email address The email of the user.'
         required: true
-        example: annabell.rogahn@example.org
+        example: vhane@example.org
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -36,14 +36,14 @@ endpoints:
         name: password
         description: 'min:8 The password of the user.'
         required: true
-        example: ruC|@LNV
+        example: 'igbf?uQ;i#B#pnfWz'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: annabell.rogahn@example.org
-      password: ruC|@LNV
+      email: vhane@example.org
+      password: 'igbf?uQ;i#B#pnfWz'
     fileParameters: []
     responses:
       -
@@ -86,7 +86,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer dk5fh46ZgPbVa3eEvD816ac'
+      - 'Bearer ZV1efva63gDPha8c5k4dEb6'
     controller: null
     method: null
     route: null
@@ -105,7 +105,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer e8g16kbD34Zhd6Pf5aVcvEa'
+      Authorization: 'Bearer 1cZaV4h6EgvdD83fa5Pb6ek'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -117,7 +117,7 @@ endpoints:
         name: name
         description: 'The name of the user.'
         required: true
-        example: enim
+        example: repellendus
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -126,7 +126,7 @@ endpoints:
         name: email
         description: 'valid email address The email of the user.'
         required: true
-        example: reggie.hagenes@example.com
+        example: sabrina.thompson@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -135,15 +135,15 @@ endpoints:
         name: password
         description: 'min:8 The password of the user.'
         required: true
-        example: "--<a,IK'Kk%G2"
+        example: '`qlhsx1XRDE'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: enim
-      email: reggie.hagenes@example.com
-      password: "--<a,IK'Kk%G2"
+      name: repellendus
+      email: sabrina.thompson@example.com
+      password: '`qlhsx1XRDE'
     fileParameters: []
     responses:
       -
@@ -178,7 +178,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer e8g16kbD34Zhd6Pf5aVcvEa'
+      - 'Bearer 1cZaV4h6EgvdD83fa5Pb6ek'
     controller: null
     method: null
     route: null
@@ -197,7 +197,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer ghZv6dfDkEP6V431b8ae5ca'
+      Authorization: 'Bearer PV86gE5D31ef6vkZb4hacad'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -209,7 +209,7 @@ endpoints:
         name: name
         description: 'The name of the user.'
         required: true
-        example: nam
+        example: accusantium
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -218,7 +218,7 @@ endpoints:
         name: email
         description: 'valid email address The email of the user.'
         required: true
-        example: kbartoletti@example.com
+        example: rdickinson@example.com
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -227,15 +227,15 @@ endpoints:
         name: password
         description: 'min:8 The password of the user.'
         required: true
-        example: '=%;S6Oo!MzxJv|SD'
+        example: '*;xxS-s@\Y{i(w'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      name: nam
-      email: kbartoletti@example.com
-      password: '=%;S6Oo!MzxJv|SD'
+      name: accusantium
+      email: rdickinson@example.com
+      password: '*;xxS-s@\Y{i(w'
     fileParameters: []
     responses:
       -
@@ -270,7 +270,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ghZv6dfDkEP6V431b8ae5ca'
+      - 'Bearer PV86gE5D31ef6vkZb4hacad'
     controller: null
     method: null
     route: null
@@ -289,7 +289,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 5vfaaVhdE6Pe38k1DZb4g6c'
+      Authorization: 'Bearer PEbv8aV31g6akZcDe46fhd5'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -301,7 +301,7 @@ endpoints:
         name: email
         description: 'valid email address The email of the user.'
         required: true
-        example: jammie21@example.com
+        example: norwood34@example.net
         type: string
         enumValues: []
         exampleWasSpecified: false
@@ -310,14 +310,14 @@ endpoints:
         name: password
         description: 'min:8 The password of the user.'
         required: true
-        example: 5Z2g%.M
+        example: 'FfOr"?9v*%'
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      email: jammie21@example.com
-      password: 5Z2g%.M
+      email: norwood34@example.net
+      password: 'FfOr"?9v*%'
     fileParameters: []
     responses:
       -
@@ -360,7 +360,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 5vfaaVhdE6Pe38k1DZb4g6c'
+      - 'Bearer PEbv8aV31g6akZcDe46fhd5'
     controller: null
     method: null
     route: null

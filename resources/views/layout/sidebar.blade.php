@@ -37,12 +37,18 @@
             <ul class="navbar-nav" id="navbar-nav">
                 @canany(['all permission'])
                 <li class="nav-item">
-                    
                     <a class="nav-link {{ (request()->is('dashboard*')) ? 'menu-link active' : 'menu-link' }}" href="{{route('dashboard')}}">
                         <i class="ri-dashboard-2-line"></i> <span>@lang('main.dashboard')</span>
                     </a>
                 </li> <!-- end Dashboard Menu -->
                 @endcanany
+                @auth('doctor')
+                <li class="nav-item">
+                    <a class="nav-link {{ (request()->is('dashboard*')) ? 'menu-link active' : 'menu-link' }}" href="{{route('dashboarddoctor')}}">
+                        <i class="ri-dashboard-2-line"></i> <span>@lang('main.dashboard')</span>
+                    </a>
+                </li> 
+                @endauth
 
                 @canany(['all permission'])
                     <li class="nav-item">
@@ -56,7 +62,7 @@
                                         <a href="{{route('userindex')}}" class="nav-link  {{ (request()->is('user/userindex*')) ? 'active' : '' }}">@lang('All Users')</a>
                                     </li>
                                 @endcan
-                                @can('all permission')
+                                @can('View Pets')
                                     <li class="nav-item">
                                         <a href="{{ route('petsindex') }}" class="nav-link  {{ (request()->is('user/petsindex*')) ? 'active' : '' }}">@lang('Users Pets')</a>
                                     </li>
@@ -81,14 +87,16 @@
                                 <li class="nav-item">
                                     <a href="{{route('doctorindex')}}" class="nav-link {{ (request()->is('doctor/doctorindex*')) ? 'active' : '' }}">@lang('All Doctors')</a>
                                 </li>
-                                {{-- @can('View','doctor') --}}
+                               {{-- @can('View Treatments','doctor') --}}
                                 <li class="nav-item">
                                     <a href="{{ route('treatmentindex') }}" class="nav-link {{ (request()->is('doctor/treatmentindex*')) ? 'active' : '' }}">@lang('Treatment')</a>
                                 </li>
-                                {{-- @endcan --}}
+                               {{-- @endcan        --}}
+                               {{-- @can('View','doctor ')                        --}}
                                     <li class="nav-item">
                                         <a href="{{route('doctor.roleList')}}" class="nav-link {{ (request()->is('doctorrole*')) ? 'active' : '' }}">@lang('Doctor Roles')</a>
                                     </li>
+                                    {{-- @endcan --}}
                               
                             </ul>
                         </div>

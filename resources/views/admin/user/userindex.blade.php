@@ -271,6 +271,9 @@
                         $('#Table').DataTable().ajax.reload();
                     }
                 });
+             } else {
+                // Handle the case where no file was selected
+                alert('something error error type');
             }
         }
 

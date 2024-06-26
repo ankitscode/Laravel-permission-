@@ -15,7 +15,7 @@ endpoints:
       authenticated: true
       custom: []
     headers:
-      Authorization: 'Bearer 8bDZ16da6EVvachkf345gPe'
+      Authorization: 'Bearer EhcaebZf513PV48a66gvdkD'
       Content-Type: application/json
       Accept: application/json
     urlParameters: []
@@ -27,13 +27,13 @@ endpoints:
         name: image
         description: 'The base64 encoded image string.'
         required: true
-        example: quibusdam
+        example: dolore
         type: string
         enumValues: []
         exampleWasSpecified: false
         custom: []
     cleanBodyParameters:
-      image: quibusdam
+      image: dolore
     fileParameters: []
     responses:
       -
@@ -88,7 +88,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 8bDZ16da6EVvachkf345gPe'
+      - 'Bearer EhcaebZf513PV48a66gvdkD'
     controller: null
     method: null
     route: null

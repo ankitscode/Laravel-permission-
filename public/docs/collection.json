@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel-Permission",
-        "_postman_id": "49f7c343-44bc-4fc1-b9b6-babdda0e280e",
+        "_postman_id": "4aaa47ad-9214-48cc-8666-d24bacf613b8",
         "description": "This is Laravel project which has used following features like guards,spatie laravel-permission, yajra-datatable,laravel-passport for api ",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -46,7 +46,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully.\",\n    \"user\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "body": "{\n    \"success\": true,\n    \"message\": \"Logged out successfully.\",\n    \"user\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n         \"image\" :  \"144875860.jpg\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
                             "name": ""
                         },
                         {
@@ -135,7 +135,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"image\":\"quibusdam\"}"
+                            "raw": "{\"image\":\"dolore\"}"
                         },
                         "description": ""
                     },
@@ -198,7 +198,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"annabell.rogahn@example.org\",\"password\":\"ruC|@LNV\"}"
+                                    "raw": "{\"email\":\"vhane@example.org\",\"password\":\"igbf?uQ;i#B#pnfWz\"}"
                                 },
                                 "description": ""
                             },
@@ -245,7 +245,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"name\":\"enim\",\"email\":\"reggie.hagenes@example.com\",\"password\":\"--<a,IK'Kk%G2\"}"
+                                    "raw": "{\"name\":\"repellendus\",\"email\":\"sabrina.thompson@example.com\",\"password\":\"`qlhsx1XRDE\"}"
                                 },
                                 "description": ""
                             },
@@ -292,7 +292,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"name\":\"nam\",\"email\":\"kbartoletti@example.com\",\"password\":\"=%;S6Oo!MzxJv|SD\"}"
+                                    "raw": "{\"name\":\"accusantium\",\"email\":\"rdickinson@example.com\",\"password\":\"*;xxS-s@\\\\Y{i(w\"}"
                                 },
                                 "description": "This endpoint lets you register  a new user"
                             },
@@ -333,7 +333,7 @@
                                 ],
                                 "body": {
                                     "mode": "raw",
-                                    "raw": "{\"email\":\"jammie21@example.com\",\"password\":\"5Z2g%.M\"}"
+                                    "raw": "{\"email\":\"norwood34@example.net\",\"password\":\"FfOr\\\"?9v*%\"}"
                                 },
                                 "description": "This endpoint lets you login as authenticated user"
                             },
@@ -393,7 +393,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"status\": true,\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"message\": \"get user profile successfully\"\n}",
+                            "body": "{\n    \"status\": true,\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"image\" :  \"144875860.jpg\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    },\n    \"message\": \"get user profile successfully\"\n}",
                             "name": ""
                         },
                         {
@@ -417,7 +417,7 @@
                         "header": [
                             {
                                 "key": "Content-Type",
-                                "value": "application\/json"
+                                "value": "multipart\/form-data"
                             },
                             {
                                 "key": "Accept",
@@ -425,8 +425,26 @@
                             }
                         ],
                         "body": {
-                            "mode": "raw",
-                            "raw": "{\"name\":\"quia\",\"email\":\"nigel.hartmann@example.org\"}"
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "name",
+                                    "value": "iste",
+                                    "type": "text",
+                                    "description": "The name of the user."
+                                },
+                                {
+                                    "key": "email",
+                                    "value": "herzog.unique@example.com",
+                                    "type": "text",
+                                    "description": "valid email address The email of the user. Must be unique (ignoring current user's ID).\n* @bodyParam image File required the image should be jpg,jpeg,svg,png."
+                                },
+                                {
+                                    "key": "image",
+                                    "src": [],
+                                    "type": "file"
+                                }
+                            ]
                         },
                         "description": ""
                     },
@@ -434,7 +452,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"status\": true,\n    \"message\": \"User updated successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "body": "{\n    \"status\": true,\n    \"message\": \"User updated successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n         \"image\": \"1777675756.jpg\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
                             "name": ""
                         },
                         {
@@ -469,7 +487,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "eaque",
+                                    "value": "suscipit",
                                     "description": "The ID of the user to delete."
                                 }
                             ]
@@ -531,7 +549,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"expedita\",\"email\":\"wdamore@example.org\"}"
+                            "raw": "{\"name\":\"accusamus\",\"image\":\"et\",\"email\":\"ycassin@example.com\"}"
                         },
                         "description": ""
                     },
@@ -539,7 +557,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n    \"status\": true,\n    \"message\": \"User Created successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
+                            "body": "{\n    \"status\": true,\n    \"message\": \"User Created successfully\",\n    \"data\": {\n        \"name\": \"John Doe\",\n        \"email\": \"johndoe@example.com\",\n        \"image':17777868.jpg,\n        \"created_at\": \"2024-06-24T12:34:56Z\",\n        \"updated_at\": \"2024-06-24T12:34:56Z\"\n    }\n}",
                             "name": ""
                         },
                         {
@@ -580,7 +598,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "dolorem",
+                                    "value": "enim",
                                     "description": "The ID of the doctor to delete."
                                 }
                             ]
@@ -680,7 +698,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"officia\",\"email\":\"marilyne57@example.org\",\"patient_name\":\"magni\",\"degree\":\"repudiandae\",\"treatment\":\"dolor\"}"
+                            "raw": "{\"name\":\"ea\",\"email\":\"cesar21@example.com\",\"patient_name\":\"odit\",\"degree\":\"et\",\"treatment\":\"sint\"}"
                         },
                         "description": ""
                     },
@@ -733,7 +751,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"deleniti\",\"email\":\"dare.ralph@example.com\",\"patient_name\":\"voluptatem\",\"degree\":\"et\",\"treatment\":\"rerum\"}"
+                            "raw": "{\"name\":\"consectetur\",\"email\":\"brakus.susanna@example.com\",\"patient_name\":\"non\",\"degree\":\"alias\",\"treatment\":\"aut\"}"
                         },
                         "description": ""
                     },
