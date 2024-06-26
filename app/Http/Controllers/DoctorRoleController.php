@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Doctor;
 use Illuminate\Http\Request;
-use Yajra\DataTables\Facades\DataTables;
-use Spatie\Permission\Models\Role;
-use Spatie\Permission\Models\Permission;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
+use Spatie\Permission\Models\Permission;
+use Yajra\DataTables\Facades\DataTables;
 
 class DoctorRoleController extends Controller
 {
@@ -19,7 +21,8 @@ class DoctorRoleController extends Controller
     {
         if (!auth_permission_check('View','doctor')) return redirect()->back();
         try {
-            return view('admin.doctor.doctor_role.doctorroleindex');
+            $doctor=Doctor::get();
+            return view('admin.doctor.doctor_role.doctorroleindex',compact('doctor'));
         } catch (\Exception $e) {
             Log::error('#### ManageRoleController -> index() #### ' . $e->getMessage());
             Session::flash('alert-error', __('message.something_went_wrong'));
@@ -155,19 +158,32 @@ class DoctorRoleController extends Controller
      * show the roles from roles tabels
      */
     public function dataTableRoles()
-    {
-        return Datatables::of(Role::where('guard_name', 'doctor')->get())
-            ->addColumn('Role', function ($role) {
-                return $role->name; // Assuming 'name' is the attribute representing the role name
-            })
-            ->addColumn('Action', function ($role) {
-                $editLink = '<a href="' . route('doctor.editRole', ['id' => $role->id]) . '" class="ri-edit-2-fill fs-16"></a>';
-                $viewLink = '<a href="' . route('doctor.showRole', ['id' => $role->id]) . '" class="ri-eye-fill fs-16"></a>';
-                // Add other action links as needed
-                
-                return $editLink . ' ' . $viewLink;
-            })
-            ->rawColumns(['Action'])
-            ->make(true);
-    }
+{
+    return DataTables::of(Role::where('guard_name', 'doctor')->get())
+        ->addColumn('Role', function ($role) {
+            return $role->name; // Assuming 'name' is the attribute representing the role name
+        })
+        ->addColumn('Action', function ($role) {
+            $editLink = '';
+            $viewLink = '';
+
+            // Corrected usage of \Auth
+            if (Auth::guard('doctor')->user()->can('Edit', 'doctor')) {
+                $editLink = '<a href="'. route('doctor.editRole', ['id' => $role->id]). '" class="ri-edit-2-fill fs-16"></a>';
+            }
+
+            // Corrected usage of \Auth
+            if (Auth::guard('doctor')->user()->can('View', 'doctor')) {
+                $viewLink = '<a href="'. route('doctor.showRole', ['id' => $role->id]). '" class="ri-eye-fill fs-16"></a>';
+            }
+
+            // Combine edit and view links
+            $links = $editLink. ' '. $viewLink;
+
+            return $links;
+        })
+        ->rawColumns(['Action']) // Ensure raw HTML is rendered for the Action column
+        ->make(true); // Return JSON response
+}
+
 }

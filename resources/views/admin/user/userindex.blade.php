@@ -19,10 +19,12 @@
                     <div class="card-header align-items-center d-flex">
                         <h5 class="card-title mb-0 flex-grow-1">Users</h5>
                         <div class="flex-shrink">
+                            @canany('Edit Role')
                             <button type="button" id="modalButton" class="btn btn-primary btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#exampleModal">
                                 Add User
                             </button>
+                            @endcanany
                         </div>
                     </div>
                     <!-- end card header -->

@@ -8,6 +8,7 @@ use App\Models\Treatment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Contracts\Session\Session;
 
@@ -38,20 +39,37 @@ class TreatmentController extends Controller
      * for datatabel  
      */
 
-    public function treatmentTablelist(Request $request)
-    {
-        return Datatables::of(Treatment::query()
-            ->select('treatments.id', 'pets.petname', 'doctors.name as doctor_name', 'treatments.treatment', 'treatments.note', 'treatments.created_at', 'treatments.updated_at')
-            ->join('pets', 'treatments.pet_id', '=', 'pets.id')
-            ->join('doctors', 'treatments.doc_id', '=', 'doctors.id'))
-            ->addColumn('Action', function ($treatment) {
-                $link =  '<a href="javascript:void(0)" onclick="editTreatment(' . $treatment->id . ')" class="btn btn-info btn-sm">Edit</a>' .
-                    '<a href="" onclick="deleteTreatment(' . $treatment->id . ') "class="btn btn-danger btn-sm">Delete</a>';
-                return $link;
-            })
-            ->rawColumns(['Action'])
-            ->make(true);
-    }
+     public function treatmentTablelist(Request $request)
+     {
+         if ($request->ajax()) {
+             return Datatables::of(Treatment::query()
+                 ->select('treatments.id', 'pets.petname', 'doctors.name as doctor_name', 'treatments.treatment', 'treatments.note', 'treatments.created_at', 'treatments.updated_at')
+                 ->join('pets', 'treatments.pet_id', '=', 'pets.id')
+                 ->join('doctors', 'treatments.doc_id', '=', 'doctors.id'))
+                 ->addColumn('Action', function ($treatment) {
+                     $editLink = '';
+                     $deleteLink = '';
+     
+                     // Check if user can edit treatment
+                     if (Auth::guard('doctor')->user()->can('Edit', 'doctor')) {
+                         $editLink = '<a href="javascript:void(0)" onclick="editTreatment(' . $treatment->id . ')" class="btn btn-info btn-sm">Edit</a>';
+                     }
+     
+                     // Check if user can delete treatment
+                     if (Auth::guard('doctor')->user()->can('Edit', 'doctor')) {
+                         $deleteLink = '<a href="javascript:void(0)" onclick="deleteTreatment(' . $treatment->id . ')" class="btn btn-danger btn-sm">Delete</a>';
+                     }
+     
+                     // Combine edit and delete links
+                     $links = $editLink . ' ' . $deleteLink;
+     
+                     return $links;
+                 })
+                 ->rawColumns(['Action'])
+                 ->make(true);
+         }
+     }
+     
     /**
      * Show the form for creating a new resource.
      */

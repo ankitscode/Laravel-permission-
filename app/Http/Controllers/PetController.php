@@ -15,26 +15,40 @@ class PetController extends Controller
 
     public function datatablepetsindex()
     {
-        if (!auth_permission_check('all permission')) return redirect()->back();
+        if (!auth_permission_check('all permission')) {
+            return redirect()->back();
+        }
+    
         try {
             return Datatables::of(Pet::query()->join('users', 'pets.user_id', '=', 'users.id'))
                 ->addColumn('user_name', function ($pet) {
                     return $pet->user->name; // Assuming you have a 'user' relationship defined in your Pet model
                 })
                 ->addColumn('Action', function ($pet) {
-                    $link =
-                        '<a href="javascript:void(0)" onclick="editPet(' . $pet->id . ')" class="btn btn-info btn-sm">Edit</a>' .
-                        '<a href="javascript:void(0)" onclick="deletePet(' . $pet->id . ')" class="btn btn-danger btn-sm">Delete</a>';
-
-                    return $link;
+                    $editLink = '';
+                    $deleteLink = '';
+    
+                    // Check if user can edit pet
+                    if (auth()->user()->can('Edit Role')) {
+                        $editLink = '<a href="javascript:void(0)" onclick="editPet(' . $pet->id . ')" class="btn btn-info btn-sm">Edit</a>';
+                    }
+    
+                    // Check if user can delete pet
+                    if (auth()->user()->can('Delete User')) {
+                        $deleteLink = '<a href="javascript:void(0)" onclick="deletePet(' . $pet->id . ')" class="btn btn-danger btn-sm">Delete</a>';
+                    }
+    
+                    // Combine edit and delete links
+                    $links = $editLink . ' ' . $deleteLink;
+    
+                    return $links;
                 })
                 ->rawColumns(['Action'])
                 ->make(true);
-            //code...
         } catch (\Throwable $th) {
             return response([
                 'status' => false,
-                'messaage' => 'internal server error',
+                'message' => 'Internal server error',
             ]);
         }
     }
@@ -155,7 +169,7 @@ class PetController extends Controller
      */
     public function destroy($id)
     {
-        if (!auth_permission_check('all permission')) return redirect()->back();
+        if (!auth_permission_check('Delete User')) return redirect()->back();
         try {
             //code...
             $pet=Pet::with('user')->find($id)->delete();

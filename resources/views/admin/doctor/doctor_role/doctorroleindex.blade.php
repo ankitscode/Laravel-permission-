@@ -6,11 +6,19 @@
                 <div class="card card-height-80">
                     <div class="card-header align-items-center d-flex">
                         <h4 class="card-title mb-0 flex-grow-1">Add Doc Role</h4>
+                       {{-- @if (!auth_permission_check('create','doctor')){ --}}
+                       {{-- @can('View','doctor') --}}
+                       {{-- @canany('create','doctor') --}}
                         <div class="flex-shrink">
-                            <a href="{{ route('doctor.createRole') }}"class="btn btn-primary">
-                                Add
-                            </a>
+                            <a href="{{ route('doctor.createRole') }}" class="btn btn-primary">Add</a>
                         </div>
+                        {{-- @endcanany --}}
+                        {{-- @endcan --}}
+                    {{-- }@else{ --}}
+
+                        {{-- <h2> not getting permission</h2> --}}
+                    {{-- } 
+                    @endif --}}
                     </div>
                     @php
                         $columns = [['name' => 'Role', 'width' => '90%'], ['name' => 'Action', 'width' => '10%']];

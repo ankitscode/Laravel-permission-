@@ -215,11 +215,13 @@
                     @endauth
                     <div class="dropdown-menu dropdown-menu-end">
                         @auth
+                        @canany('all permission')
                             <h6 class="dropdown-header">{{ auth()->user()->name }}</h6>
                             <a class="dropdown-item" href="{{ route('showuser', ['id' => auth()->user()->id]) }}">
                                 <i class="mdi mdi-account-circle text-muted fs-16 align-middle me-1"></i>
                                 My Profile !
                             </a>
+                            @endcanany
                             @canany('all permission')
                             <a class="dropdown-item" href="{{ route('changePassword') }}"><i
                                 class="mdi mdi-message-text-outline text-muted fs-16 align-middle me-1"></i> <span

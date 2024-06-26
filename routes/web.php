@@ -34,7 +34,7 @@ Route::get('/Signup', function () {
     return redirect()->route('register');
 })->name('Signup');
 
-Route::group(['middleware' => ['auth','verified']], function () {
+Route::group(['middleware' => ['auth']], function () {
  
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/change-language/{lang}', [DashboardController::class, 'changeLanguage'])->name('admin.changeLanguage');   

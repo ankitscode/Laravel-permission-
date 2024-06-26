@@ -6,6 +6,7 @@ use Exception;
 use App\Models\Doctor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Yajra\DataTables\Facades\DataTables;
@@ -33,9 +34,23 @@ class Doctorcontroller extends Controller
     {
         return Datatables::of(Doctor::query())
             ->addColumn('Action', function ($doctor) {
-                $link = '<a href="javascript:void(0)" onclick="editDoctor(' . $doctor->id . ')" class="btn btn-primary btn-sm">Edit</a> '  .
-                    '<a href="javascript:void(0)" onclick="deleteDoctor(' . $doctor->id . ')" class="btn btn-danger btn-sm" id="deleteButton">Delete</a>';
-                return $link;
+                $editLink = '';
+                $deleteLink = '';
+
+                // Check if user can edit treatment
+                if (Auth::guard('doctor')->user()->can('Edit', 'doctor')) {
+                    $editLink = '<a href="javascript:void(0)" onclick="editDoctor(' . $doctor->id . ')" class="btn btn-info btn-sm">Edit</a>';
+                }
+
+                // Check if user can delete doctor
+                if (Auth::guard('doctor')->user()->can('Edit', 'doctor')) {
+                    $deleteLink = '<a href="javascript:void(0)" onclick="deleteDoctor(' . $doctor->id . ')" class="btn btn-danger btn-sm">Delete</a>';
+                }
+
+                // Combine edit and delete links
+                $links = $editLink . ' ' . $deleteLink;
+
+                return $links;
             })
             ->rawColumns(['Action'])
             ->make(true);

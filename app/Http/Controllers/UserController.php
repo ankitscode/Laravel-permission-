@@ -30,14 +30,28 @@ class Usercontroller extends Controller
     {
         return Datatables::of(User::query())
             ->addColumn('Action', function ($user) {
-                $link = '<a href="' . route('edituser', $user->id) . '" class="btn btn-primary btn-sm">Edit</a>  ' .
-                    '<a href="javascript:void(0)" onclick="deleteUser(' . $user->id . ')"class="btn btn-danger btn-sm">Delete</a>';
-                return $link;
+                $editLink = '';
+                $deleteLink = '';
+    
+                // Check if user can edit
+                if (auth()->user()->can('Edit User')) {
+                    $editLink = '<a href="' . route('edituser', $user->id) . '" class="btn btn-primary btn-sm">Edit</a>';
+                }
+    
+                // Check if user can delete
+                if (auth()->user()->can('Delete User')) {
+                    $deleteLink = '<a href="javascript:void(0)" onclick="deleteUser(' . $user->id . ')" class="btn btn-danger btn-sm">Delete</a>';
+                }
+    
+                // Combine edit and delete links
+                $links = $editLink . ' ' . $deleteLink;
+    
+                return $links;
             })
             ->editColumn('image', function ($user) {
                 return asset('storage/images/' . $user->image);
             })
-            ->rawColumns(['Action'])
+            ->rawColumns(['Action']) // Ensure 'Action' column HTML is rendered as raw HTML
             ->make(true);
     }
 
